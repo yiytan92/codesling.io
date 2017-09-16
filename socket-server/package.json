@@ -1,0 +1,11 @@
+{
+  "name": "codesling-socket-server",
+  "private": true,
+  "scripts": {
+    "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^21.1.0"
+  }
+}
