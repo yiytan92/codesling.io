@@ -4,5 +4,7 @@
   "scripts": {
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint-config-hackreactor": "reactorcore/eslint-config-hackreactor"
+  }
 }
