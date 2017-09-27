@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Loading from '../Loading';
-import Icon from '../Icon';
 
 import './Button.css';
 
@@ -11,8 +10,6 @@ const Button = ({
   color,
   error,
   type,
-  iconName,
-  iconSize,
   className,
   onClick,
   id,
@@ -38,9 +35,6 @@ const Button = ({
         ) : (
           error ? error : (
             <span>
-              {iconName &&
-                <Icon name={iconName} size={iconSize}/>
-              }
               {text}
             </span>
           )
