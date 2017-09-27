@@ -1,0 +1,22 @@
+{
+  "name": "codesling-socket-server",
+  "private": true,
+  "scripts": {
+    "start": "nodemon bin/entry.js",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
+    "jest": "^21.1.0",
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.18.1",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.4"
+  }
+}
