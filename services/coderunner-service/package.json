@@ -3,9 +3,16 @@
   "private": true,
   "scripts": {
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
-    "test": "jest"
+    "test": "jest",
+    "start": "nodemon app.js"
   },
   "devDependencies": {
-    "jest": "^21.1.0"
+    "jest": "^21.1.0",
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "express": "^4.15.4",
+    "tmp": "^0.0.33"
   }
 }
