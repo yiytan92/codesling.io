@@ -7,7 +7,7 @@
   animation: sk-rotateplane 1.2s infinite ease-in-out; }
 
 .spinner.color-white {
-  background-color: palette("white"); }
+  background-color: #FFF; }
 
 @-webkit-keyframes sk-rotateplane {
   0% {
