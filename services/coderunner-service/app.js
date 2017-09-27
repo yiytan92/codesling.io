@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const tmp = require('tmp');
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   res.send('Hello World');
@@ -20,10 +20,9 @@ app.post('/submit-code', (req, res) => {
       } else {
         execFile('node', [path], (err, stdout, stderr) => {
           if (err) {
-            res.send(err);
-          } else if (stderr) {
-            res.write(stderr);
-            res.send();
+            stderr = stderr.split('\n');
+            stderr.shift();
+            res.send(stderr.join('\n'));
           } else {
             res.write(stdout);
             res.send();
