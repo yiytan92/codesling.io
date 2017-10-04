@@ -2,9 +2,20 @@
   "name": "codesling",
   "version": "1.0.0",
   "scripts": {
-    "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash"
+    "lint:client": "cd client && yarn run lint",
+    "lint:rest-server": "cd rest-server && yarn run lint",
+    "lint:socket-server": "cd socket-server && yarn run lint",
+    "lint:coderunner-service": "cd services/coderunner-service && yarn run lint",
+    "lint": "npm-run-all -p lint:client lint:rest-server lint:socket-server lint:coderunner-service",
+    "start:client": "cd client && yarn start",
+    "start:rest-server": "cd rest-server && yarn start",
+    "start:socket-server": "cd socket-server && yarn start",
+    "start:coderunner-service": "cd services/coderunner-service && yarn start",
+    "start:server": "npm-run-all -p start:rest-server start:socket-server start:coderunner-service"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "reactorcore/eslint-config-hackreactor"
-  }
+    "eslint": "^4.8.0",
+    "npm-run-all": "^4.1.1"
+  },
+  "dependencies": {}
 }

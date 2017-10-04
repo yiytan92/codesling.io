@@ -1,15 +1,13 @@
-const { writeFile, chown } = require('fs');
-const { execFile } = require('child_process');
-const express = require('express');
-const bodyParser = require('body-parser');
-const tmp = require('tmp');
+import { writeFile, chown } from 'fs';
+import { execFile } from 'child_process';
+import express from 'express';
+import bodyParser from 'body-parser';
+import tmp from 'tmp';
+
 const app = express();
+const PORT = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
-
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
 
 app.post('/submit-code', (req, res) => {
   tmp.file({ postfix: '.js' }, function _tempFileCreated(err, path, fd) {
@@ -24,7 +22,7 @@ app.post('/submit-code', (req, res) => {
             stderr.shift();
             res.send(stderr.join('\n'));
           } else {
-            res.write(stdout);
+            res.write(JSON.stringify(stdout));  
             res.send();
           }
         });
@@ -33,4 +31,4 @@ app.post('/submit-code', (req, res) => {
   });
 });
 
-app.listen(4000);
+app.listen(PORT, console.log(`coderunner-service is listening on port ${PORT}`));
