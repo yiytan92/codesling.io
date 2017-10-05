@@ -11,7 +11,7 @@ const port = 4990 || process.env.PORT;
 app.use(bodyParser.json());
 app.use(cors());
 
-app.post('/run', async function(req, res) {
+app.post('/run', async (req, res) => {
   const { code } = req.body;
   if (!code) {
     return res.json({
@@ -24,16 +24,16 @@ app.post('/run', async function(req, res) {
     const resp = await axios.post(`${process.env.CODERUNNER_SERVICE_URL}/submit-code`, {
       code,
     });
-    let stdout = resp.data;
-    res.json({
+    const stdout = resp.data;
+    return res.json({
       success: true,
       stdout,
     });
   } catch (e) {
     log('error posting to coderunner service. e = ', e);
-    res.status(400).json({
+    return res.status(400).json({
       success: false,
-      message: 'error running your code.'
+      message: 'error running your code.',
     });
   }
 });

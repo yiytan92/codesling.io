@@ -1,4 +1,4 @@
-import { writeFile, chown } from 'fs';
+import { writeFile } from 'fs';
 import { execFile } from 'child_process';
 import express from 'express';
 import bodyParser from 'body-parser';
@@ -10,19 +10,20 @@ const PORT = process.env.PORT || 4000;
 app.use(bodyParser.json());
 
 app.post('/submit-code', (req, res) => {
-  tmp.file({ postfix: '.js' }, function _tempFileCreated(err, path, fd) {
+  tmp.file({ postfix: '.js' }, (errCreatingTmpFile, path) => {
     console.log('Path is', path);
-    writeFile(path, req.body.code, err => {
-      if (err) {
-        res.send(err);
+    writeFile(path, req.body.code, (errWritingFile) => {
+      if (errWritingFile) {
+        res.send(errWritingFile);
       } else {
-        execFile('node', [path], (err, stdout, stderr) => {
-          if (err) {
-            stderr = stderr.split('\n');
-            stderr.shift();
-            res.send(stderr.join('\n'));
+        execFile('node', [path], (errExecutingFile, stdout, stderr) => {
+          if (errExecutingFile) {
+            let stderrFormatted = stderr.split('\n');
+            stderrFormatted.shift();
+            stderrFormatted = stderrFormatted.join('\n');
+            res.send(stderrFormatted);
           } else {
-            res.write(JSON.stringify(stdout));  
+            res.write(JSON.stringify(stdout));
             res.send();
           }
         });

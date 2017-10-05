@@ -1,15 +1,15 @@
 /**
- * 
+ *
  *  Server emissions
- * 
+ *
  */
 export const serverInitialState = ({ client, room }) => {
   client.emit('server.initialState', {
-    text: room.get('text')
+    text: room.get('text'),
   });
 };
 
-export const serverChanged = ({ io, client, room }) => {
+export const serverChanged = ({ io, room }) => {
   const roomId = room.get('id');
   const text = room.get('text');
   io
