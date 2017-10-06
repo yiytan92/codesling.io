@@ -16,7 +16,8 @@
     "setup:rest-server": "cd rest-server && yarn",
     "setup:socket-server": "cd socket-server && yarn",
     "setup:coderunner-service": "cd services/coderunner-service && yarn",
-    "setup": "npm-run-all -p setup:client setup:rest-server setup:socket-server setup:coderunner-service"
+    "setup": "npm-run-all -p setup:client setup:rest-server setup:socket-server setup:coderunest-server setup:socket-server setup:coderunner-service",
+    "env": "node bin/entry.js buildEnv"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.1"
