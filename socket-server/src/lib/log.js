@@ -1,3 +1,5 @@
 export default (...args) => {
-  process.env.DEBUG === 'TRUE' && console.log(...args);
+  if (process.env.DEBUG === 'TRUE') {
+    console.log(...args);
+  }
 };

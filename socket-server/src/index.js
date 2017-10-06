@@ -10,7 +10,7 @@ const server = http.createServer();
 const io = SocketIo(server);
 const rooms = new Rooms(io);
 
-io.on('connection', function(client) {
+io.on('connection', (client) => {
   log('client connected');
   const { roomId } = client.handshake.query;
   const room = rooms.findOrCreate(roomId);
