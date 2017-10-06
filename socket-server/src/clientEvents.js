@@ -18,6 +18,7 @@ import {
  */
 const clientReady = ({ client, room }) => {
   log('client ready heard');
+  log('this is the client count ', io.eio.clientsCount)
   serverInitialState({ client, room });
 };
 
