@@ -9,14 +9,14 @@ import 'codemirror/mode/javascript/javascript.js';
 import 'codemirror/lib/codemirror.css';
 
 class CodeEditor extends Component {
-  
+
   state = {
     text: '',
     stdout: ''
   }
 
   runCode = () => {
-    axios.post(`${process.env.REACT_APP_REST_SERVER}/run`, {
+    axios.post(`${process.env.REACT_APP_REST_SERVER_URL}/run`, {
       code: this.state.text
     })
       .then(({ data }) => {
@@ -27,9 +27,9 @@ class CodeEditor extends Component {
         console.log('runCode post request err. err = ', err);
       });
   }
-  
+
   componentDidMount() {
-    this.socket = io(process.env.REACT_APP_SOCKET_SERVER, {
+    this.socket = io(process.env.REACT_APP_SOCKET_SERVER_URL, {
       query: 'roomId=default'
     });
 
