@@ -16,9 +16,8 @@ import {
  *  @url {https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map}
  *
  */
-const clientReady = ({ client, room }) => {
+const clientReady = ({ io, client, room }) => {
   log('client ready heard');
-  log('this is the client count ', io.eio.clientsCount)
   serverInitialState({ client, room });
 };
 
