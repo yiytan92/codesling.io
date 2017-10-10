@@ -4,6 +4,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import tmp from 'tmp';
 
+import log from './lib/log';
+
 const app = express();
 const PORT = process.env.PORT || 4000;
 
@@ -11,7 +13,6 @@ app.use(bodyParser.json());
 
 app.post('/submit-code', (req, res) => {
   tmp.file({ postfix: '.js' }, (errCreatingTmpFile, path) => {
-    console.log('Path is', path);
     writeFile(path, req.body.code, (errWritingFile) => {
       if (errWritingFile) {
         res.send(errWritingFile);
@@ -32,4 +33,4 @@ app.post('/submit-code', (req, res) => {
   });
 });
 
-app.listen(PORT, console.log(`coderunner-service is listening on port ${PORT}`));
+app.listen(PORT, log(`coderunner-service is listening on port ${PORT}`));
