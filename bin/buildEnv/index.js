@@ -31,4 +31,3 @@ try {
   console.log('error creating .env files. e = ', e);
   process.exit(1);
 }
-
