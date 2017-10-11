@@ -1251,9 +1251,9 @@ escodegen@^1.6.1:
   optionalDependencies:
     source-map "~0.5.6"
 
-eslint-config-airbnb-base@^12.0.1:
-  version "12.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-12.0.1.tgz#abaca7b4536faa7e094add5a9801970fefdd39a4"
+eslint-config-airbnb-base@^12.0.2:
+  version "12.0.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-12.0.2.tgz#45fea317d71b8f1da323c730f3a8471988757793"
   dependencies:
     eslint-restricted-globals "^0.1.1"
 
@@ -3353,7 +3353,7 @@ socket.io-adapter@~1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/socket.io-adapter/-/socket.io-adapter-1.1.1.tgz#2a805e8a14d6372124dd9159ad4502f8cb07f06b"
 
-socket.io-client@~2.0.2:
+socket.io-client@^2.0.3, socket.io-client@~2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/socket.io-client/-/socket.io-client-2.0.3.tgz#6caf4aff9f85b19fd91b6ce13d69adb564f8873b"
   dependencies:

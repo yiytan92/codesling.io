@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import CodeMirror from 'react-codemirror2'
+import CodeMirror from 'react-codemirror2';
 import io from 'socket.io-client/dist/socket.io.js';
 
 import Button from '../globals/Button';
