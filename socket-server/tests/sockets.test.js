@@ -7,8 +7,8 @@ require('dotenv').config();
 require('dotenv').load();
 
 describe('Client interactions', () => {
-  const client1 = ioClient.connect(process.env.TEST_SOCKET_SERVER_PORT);
-  const client2 = ioClient.connect(process.env.TEST_SOCKET_SERVER_PORT);
+  const client1 = ioClient.connect(`${process.env.HOST}:${process.env.PORT}`);
+  const client2 = ioClient.connect(`${process.env.HOST}:${process.env.PORT}`);
   beforeAll(done => {
     done = after(2, done);
     client1.on('connect', () => {
@@ -37,6 +37,7 @@ describe('Client interactions', () => {
       expect(JSON.stringify(text)).toBe(JSON.stringify(obj));
       done();
     });
+    console.log('emitting');
     client1.emit('client.ready');
     client2.emit('client.ready');
   });
@@ -58,6 +59,6 @@ describe('Client interactions', () => {
       expect(1).toBe(1);
       done();
     });
-    client1.emit('client.disconnect')
+    client1.emit('client.disconnect');
   });
 });
