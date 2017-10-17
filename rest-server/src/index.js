@@ -14,7 +14,7 @@ app.use(cors());
 app.post('/run', async (req, res) => {
   const { code } = req.body;
   if (!code) {
-    return res.json({
+    return res.status(400).json({
       success: false,
       message: 'code property on req.body is required',
     });
