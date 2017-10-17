@@ -19,12 +19,23 @@ const createEnvFile = (envName, directoryName) => {
   }
 
   const defaults = configObj.defaults;
-  const variablePrefix = configObj.directories[directoryName].envPrefix || '';
+  const variablePrefix = configObj.directories[directoryName]._envPrefix || '';
   const serversAndServices = _.pickBy(configObj.directories, (subAppSettings, subAppName) => {
-    return !!subAppName.match(/\-server|-service/);
+    return !!subAppName.match(/\-server|-service/) && subAppName !== directoryName;
   });
 
+  // write default values
   _.each(defaults, (value, key) => file += `${variablePrefix}${key}=${value}\n`);
+
+  // write own app specifics
+  _.each(configObj.directories[directoryName], (ownSettingValue, ownSettingKey) => {
+    // as long as its not a special config setting (denoted by _ in key name)
+    if (!ownSettingKey.includes('_')) {
+      file += `${ownSettingKey.toUpperCase()}=${ownSettingValue}\n`;
+    }
+  });
+
+  // include other services' URLs
   _.each(serversAndServices, (subAppSettings, subAppName) => {
     const { host, port } = subAppSettings;
     subAppName = subAppName.replace('-', '_');
