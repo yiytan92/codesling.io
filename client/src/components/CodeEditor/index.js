@@ -29,23 +29,7 @@ class CodeEditor extends Component {
   }
 
   componentDidMount() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     this.socket = io(process.env.REACT_APP_SOCKET_SERVER_URL, {
-=======
-    this.socket = io(process.env.REACT_APP_SOCKET_SERVER_LOCAL_HOST, {
->>>>>>> [fix]
-=======
-    this.socket = io(process.env.REACT_APP_SOCKET_SERVER_LOCAL_HOST, {
->>>>>>> [fix]
-=======
-    this.socket = io(process.env.REACT_APP_SOCKET_SERVER_LOCAL_HOST, {
->>>>>>> [fix]
-=======
-    this.socket = io(process.env.REACT_APP_SOCKET_SERVER_LOCAL_HOST, {
->>>>>>> fa95485347347e4adb36301ab4ddfce54201d19a
       query: 'roomId=default'
     });
 
