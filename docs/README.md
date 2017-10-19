@@ -27,4 +27,4 @@ The file architecture of Codesling is broken up into sub applications. The speci
 
 **Files:**
 
-- `.test.js`: All test files to be recognized by Jest
+- `*.test.js`: All test files to be recognized by Jest
