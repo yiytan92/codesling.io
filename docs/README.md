@@ -6,25 +6,37 @@ This allows for smoother deployment of the sub applications as servers/services 
 
 Eventually, this may be refactored such that every sub application is its own github repository with its own version and tracking.
 
+# Getting Started
+
+In order to get the app started for development, a few key steps are needed.
+
+1. Install [MongoDB](https://www.mongodb.com/) & make sure you have a local mongo server instance running.
+1. `cp config/env.sample.js config/env.js`
+1. `yarn` to install dependencies
+1. `yarn setup` to install dependencies across all sub applications
+1. `yarn env` to create necessary `.env` files
+1. `yarn start:client` in one window for the client-side dev server
+1. `yarn start:server` in one window to start all backend servers/services
+
 # System Architecture
 
 The system architecture of Codesling consists of these main sub applications:
 
 ![codesling architecture v1](assets/codesling_architecture_v1.png)
 
-## client
+## [client](client/)
 
 The front-end codebase is written in [ReactJS](https://reactjs.org/) and bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app#getting-started)
 
-## rest-server
+## [rest-server](rest-server/)
 
 The RESTful JSON Data API is written in Javascript using NodeJS and [expressJS](https://expressjs.com/).
 
-## socket-server
+## [socket-server](socket-server/)
 
 The realtime socket server is written in Javascript using NodeJS and [socket.io](https://socket.io/).
 
-## coderunner-service
+## [coderunner-service](coderunner-service/)
 
 The service that runs individual code submissions is written in Javascript using NodeJS and some native NodeJS libraries.
 
