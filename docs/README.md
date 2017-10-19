@@ -12,6 +12,22 @@ The system architecture of Codesling consists of these main sub applications:
 
 ![codesling architecture v1](assets/codesling_architecture_v1.png)
 
+## client
+
+The front-end codebase is written in [ReactJS](https://reactjs.org/) and bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app#getting-started)
+
+## rest-server
+
+The RESTful JSON Data API is written in Javascript using NodeJS and [expressJS](https://expressjs.com/).
+
+## socket-server
+
+The realtime socket server is written in Javascript using NodeJS and [socket.io](https://socket.io/).
+
+## coderunner-service
+
+The service that runs individual code submissions is written in Javascript using NodeJS and some native NodeJS libraries.
+
 # File Architecture
 
 The file architecture of Codesling is broken up into sub applications. The specific architecture within the sub applications can be found in the individual `README.md` files for each sub application.
