@@ -22,21 +22,21 @@ In order to get the app started for development, a few key steps are needed.
 
 The system architecture of Codesling consists of these main sub applications:
 
-![codesling architecture v1](assets/codesling_architecture_v1.png)
+![codesling architecture v1](assets/codesling-architecture-v1.png)
 
-## [client](client/)
+## [client](client.md)
 
 The front-end codebase is written in [ReactJS](https://reactjs.org/) and bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app#getting-started)
 
-## [rest-server](rest-server/)
+## [rest-server](rest-server.md)
 
 The RESTful JSON Data API is written in Javascript using NodeJS and [expressJS](https://expressjs.com/).
 
-## [socket-server](socket-server/)
+## [socket-server](socket-server.md)
 
 The realtime socket server is written in Javascript using NodeJS and [socket.io](https://socket.io/).
 
-## [coderunner-service](coderunner-service/)
+## [coderunner-service](coderunner-service.md)
 
 The service that runs individual code submissions is written in Javascript using NodeJS and some native NodeJS libraries.
 
@@ -56,3 +56,11 @@ The file architecture of Codesling is broken up into sub applications. The speci
 **Files:**
 
 - `*.test.js`: All test files to be recognized by Jest
+
+# Other Conventions
+
+#### bin/entry.js
+
+Across all of the back-end servers and services, this project utilizes an `entry.js` script responsible for starting the server.
+
+This entry script utilizes `babel-register` and `babel-polyfill` with the [`env` preset](https://github.com/babel/babel-preset-env) for leveraging ES6+ features. This setup will transpile the back-end ES6+ source code while interpreting the code, so no further pre-transpilation is required.
