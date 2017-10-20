@@ -3,12 +3,14 @@ import { execFile } from 'child_process';
 import express from 'express';
 import bodyParser from 'body-parser';
 import tmp from 'tmp';
+import cors from 'cors';
 
 import log from './lib/log';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+app.use(cors());
 app.use(bodyParser.json());
 
 app.post('/submit-code', (req, res) => {
