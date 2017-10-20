@@ -1,6 +1,6 @@
 # Codesling Client Developer Documentation
 
-If you want to run all backend services along with the clientside development server, check out the project's root documentation `README.md` [instructions](../README.md)
+**Note:** If you want to run all backend services along with the clientside development server, check out the main `README.md` [instructions](README.md#getting-started)
 
 To get started on client-side development, run the following from within the `client` folder:
 

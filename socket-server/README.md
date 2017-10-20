@@ -1,3 +1,5 @@
 # Codesling Socket Server
 
-The codesling socket-server is a real-time server for codesling's clients.
+The socket-server is a realtime websocket server for codesling's clients.
+
+[Developer Documentation](../docs/socket-server.md) is available in the `docs/` folder.
