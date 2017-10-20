@@ -10,13 +10,28 @@ Eventually, this may be refactored such that every sub application is its own gi
 
 In order to get the app started for development, a few key steps are needed.
 
-1. Install [MongoDB](https://www.mongodb.com/) & make sure you have a local mongo server instance running.
-1. `cp config/env.sample.js config/env.js`
-1. `yarn` to install dependencies
-1. `yarn setup` to install dependencies across all sub applications
-1. `yarn env` to create necessary `.env` files
-1. `yarn start:client` in one window for the client-side dev server
-1. `yarn start:server` in one window to start all backend servers/services
+* Install [MongoDB](https://www.mongodb.com/) & make sure you have a local mongo server instance running.
+
+* Copy the sample env config object
+
+```bash
+cp config/env.sample.js config/env.js
+```
+
+* Install Dependencies and Run Setup Scripts
+
+```bash
+yarn
+yarn setup
+yarn env development
+```
+
+* Start the application
+
+```bash
+yarn start:client # in one window
+yarn start:server # in another window
+```
 
 # System Architecture
 
