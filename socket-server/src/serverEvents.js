@@ -5,6 +5,7 @@
  */
 export const serverInitialState = ({ client, room }) => {
   client.emit('server.initialState', {
+    id: client.id,
     text: room.get('text'),
   });
 };
