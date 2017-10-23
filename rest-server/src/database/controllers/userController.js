@@ -11,8 +11,8 @@ module.exports = {
     try {
       const user = await User.findById(req.params.id);
       res.status(200).send(user);
-    } catch (err) {
-      res.status(400).send(err);
+    } catch (error) {
+      res.status(400).send(error);
     }
   },
   userPost: (req, res) => {
@@ -26,8 +26,8 @@ module.exports = {
           res.status(200).send(userCreated);
         }
       });
-    } catch (err) {
-      res.send(400).send(err);
+    } catch (error) {
+      res.send(400).send(error);
     }
   },
   userUpdate: (req, res) => {
@@ -47,8 +47,8 @@ module.exports = {
           });
         }
       });
-    } catch (err) {
-      res.status(400).send(err);
+    } catch (error) {
+      res.status(400).send(error);
     }
   },
   userDelete: (req, res) => {
@@ -60,8 +60,8 @@ module.exports = {
         };
         res.status(200).send(response);
       });
-    } catch (err) {
-      res.send(400).send(err);
+    } catch (error) {
+      res.send(400).send(error);
     }
   },
 };
