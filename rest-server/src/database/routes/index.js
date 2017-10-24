@@ -1,6 +1,14 @@
 import express from 'express';
-import { userFetch, userPost, userUpdate, userDelete } from '../controllers/userController';
-import { roomFetch, roomPost, roomUpdate } from '../controllers/roomController';
+import {
+  userFetch,
+  userPost,
+  userUpdate,
+  userDelete } from '../controllers/userController';
+import {
+  roomFetch,
+  roomPost,
+  roomUpdate,
+  roomDelete } from '../controllers/roomController';
 
 const router = express.Router();
 
@@ -11,10 +19,11 @@ router.route('/users/:id')
   .put(userUpdate)
   .delete(userDelete);
 
-// CRU ops for rooms
+// CRUD ops for rooms
 router.route('/rooms/:id')
   .get(roomFetch)
   .post(roomPost)
-  .put(roomUpdate);
+  .put(roomUpdate)
+  .delete(roomDelete);
 
 module.exports = router;
