@@ -30,7 +30,7 @@ class CodeEditor extends Component {
 
   componentDidMount() {
     this.socket = io(process.env.REACT_APP_SOCKET_SERVER_URL, {
-      query: `roomId=${window.location.href.slice(22)}`
+      query: `roomId=${this.props.match.params.socketID}`
     });
 
     this.socket.on('connect', () => {
