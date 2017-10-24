@@ -4,8 +4,8 @@ import io from 'socket.io-client/dist/socket.io.js';
 import Button from '../globals/Button';
 
 export default class LandingPage extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       id: null,
