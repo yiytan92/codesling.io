@@ -18,7 +18,7 @@ import {
  */
 const clientReady = ({ io, client, room }) => {
   log('client ready heard');
-  serverInitialState({ client, room });
+  serverInitialState({ io, client, room });
 };
 
 const clientUpdate = ({ io, client, room }, payload) => {

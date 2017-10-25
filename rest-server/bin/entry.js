@@ -11,7 +11,7 @@ if (!fs.readFileSync(path.resolve(__dirname, '../.env'))) {
 }
 
 env.config({
-  path: path.resolve(__dirname, '../.env')
+  path: path.resolve(__dirname, '../.env'),
 });
 
 require('../src');
