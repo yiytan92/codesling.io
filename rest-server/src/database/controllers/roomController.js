@@ -24,8 +24,8 @@ module.exports = {
     }
   },
   roomPost: async (req, res) => {
-    const newRoom = new Room(req.body);
     try {
+      const newRoom = new Room(req.body);
       await newRoom.save();
       log('Room successfully created');
       return res.status(200).json({
@@ -41,8 +41,8 @@ module.exports = {
     }
   },
   roomUpdate: async (req, res) => {
-    const room = await Room.findById(req.params.id);
     try {
+      const room = await Room.findById(req.params.id);
       room.text = req.body.text;
       await room.save();
       log('Room successfully updated');

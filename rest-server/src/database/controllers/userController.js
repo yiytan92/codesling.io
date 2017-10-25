@@ -24,8 +24,8 @@ module.exports = {
     }
   },
   userPost: async (req, res) => {
-    const newUser = new User(req.body);
     try {
+      const newUser = new User(req.body);
       await newUser.save();
       log('User successfully created');
       return res.status(200).json({
@@ -41,8 +41,8 @@ module.exports = {
     }
   },
   userUpdate: async (req, res) => {
-    const user = await User.findById(req.params.id);
     try {
+      const user = await User.findById(req.params.id);
       user.username = req.body.username;
       user.password = req.body.password;
       await user.save();
