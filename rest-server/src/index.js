@@ -3,8 +3,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 import log from './lib/log';
-import db from './database';
 import router from './database/routes';
+import './database';
 
 const app = express();
 const port = 4990 || process.env.PORT;
