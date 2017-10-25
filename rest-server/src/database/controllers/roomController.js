@@ -11,10 +11,16 @@ module.exports = {
     try {
       const room = await Room.findById(req.params.id);
       log('Room successfully fetched');
-      res.status(200).send(room);
+      return res.status(200).json({
+        success: true,
+        room,
+      });
     } catch (error) {
       log('Error in roomFetch ', error);
-      res.status(400).send(error);
+      return res.status(400).json({
+        success: false,
+        error,
+      });
     }
   },
   roomPost: async (req, res) => {
@@ -22,32 +28,50 @@ module.exports = {
     try {
       await newRoom.save();
       log('Room successfully created');
-      res.status(200).send(newRoom);
+      return res.status(200).json({
+        success: true,
+        newRoom,
+      });
     } catch (error) {
       log('Error in roomPost ', error);
-      res.status(400).send(error);
+      return res.status(400).json({
+        success: false,
+        error,
+      });
     }
   },
   roomUpdate: async (req, res) => {
+    const room = await Room.findById(req.params.id);
     try {
-      const room = Room.findById(req.params.id);
       room.text = req.body.text;
       await room.save();
       log('Room successfully updated');
-      res.status(200).send(room);
+      return res.status(200).json({
+        success: true,
+        room,
+      });
     } catch (error) {
       log('Error in roomUpdate ', error);
-      res.status(400).send(error);
+      return res.status(400).json({
+        success: false,
+        error,
+      });
     }
   },
   roomDelete: async (req, res) => {
     try {
       const roomDeleted = await Room.findByIdAndRemove(req.params.id);
       log('Room successfully deleted');
-      res.status(200).send(roomDeleted);
+      return res.status(200).json({
+        success: true,
+        roomDeleted,
+      });
     } catch (error) {
       log('Error in roomDelete ', error);
-      res.status(400).send(error);
+      return res.status(400).json({
+        success: false,
+        error,
+      });
     }
   },
 };
