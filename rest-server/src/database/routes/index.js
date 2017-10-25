@@ -4,14 +4,17 @@ import {
   userFetch,
   userPost,
   userUpdate,
-  userDelete } from '../controllers/userController';
+  userDelete,
+} from '../controllers/userController';
 import {
   roomFetch,
   roomPost,
   roomUpdate,
-  roomDelete } from '../controllers/roomController';
+  roomDelete,
+} from '../controllers/roomController';
 import {
-  codeRunner } from '../controllers/codeRunnerController';
+  codeRunner,
+} from '../controllers/codeRunnerController';
 
 const router = express.Router();
 
