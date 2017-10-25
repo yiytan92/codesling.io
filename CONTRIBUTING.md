@@ -1,9 +1,9 @@
 # Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository before making a change. 
+email, or any other method with the owners of this repository before making a change.
 
-Please read the entire contribution guide and `docs/README.md`.
+Please read this entire contribution guide, developer documentation ([`docs/README.md`](docs/)) and the [documentation contribution guide](`docs/CONTRIBUTING.md) before contributing.
 
 ## Commit Guidelines
 
@@ -71,6 +71,10 @@ Pushing:
 ### Branch Workflow Suggestion
 
 We recommend making individual feature branches for each issue/feature. By doing so, you will prevent your pull request from being rejected for containing commits relating to more than one issue.
+
+## When Submitting a Feature
+
+When submitting a feature, be sure to denote any new exposed API endpoints / websocket realtime events by adding to the [developer documentation](docs/). Specifics on the documentation syntax are laid out in the [documentation contribution guide](docs/CONTRIBUTING.md).
 
 ## Pull Request Process
 
