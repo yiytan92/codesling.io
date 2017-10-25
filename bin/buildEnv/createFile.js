@@ -29,8 +29,8 @@ const createEnvFile = (envName, directoryName) => {
 
   // write own app specifics
   _.each(configObj.directories[directoryName], (ownSettingValue, ownSettingKey) => {
-    // as long as its not a special config setting (denoted by _ in key name)
-    if (!ownSettingKey.includes('_')) {
+    // as long as its not a special config setting (prefixed by a _ in the key name)
+    if (ownSettingKey[0] !== '_') {
       file += `${ownSettingKey.toUpperCase()}=${ownSettingValue}\n`;
     }
   });
