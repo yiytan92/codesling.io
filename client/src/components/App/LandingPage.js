@@ -37,7 +37,7 @@ export default class LandingPage extends Component {
           text='Start Pair Programming!'
           onClick={this.startPairProgramming}
         />
-      </ div>
+      </div>
     )
   }
 }

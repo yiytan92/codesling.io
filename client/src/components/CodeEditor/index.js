@@ -16,7 +16,7 @@ class CodeEditor extends Component {
   }
 
   runCode = () => {
-    axios.post(`${process.env.REACT_APP_REST_SERVER_URL}/run`, {
+    axios.post(`${process.env.REACT_APP_REST_SERVER_URL}/api/run`, {
       code: this.state.text
     })
       .then(({ data }) => {
