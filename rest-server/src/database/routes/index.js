@@ -12,9 +12,7 @@ import {
   roomUpdate,
   roomDelete,
 } from '../controllers/roomController';
-import {
-  codeRunner,
-} from '../controllers/codeRunnerController';
+import { codeRunner } from '../controllers/codeRunnerController';
 
 const router = express.Router();
 
