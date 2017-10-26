@@ -16,7 +16,12 @@
     "setup:rest-server": "cd rest-server && yarn",
     "setup:socket-server": "cd socket-server && yarn",
     "setup:coderunner-service": "cd services/coderunner-service && yarn",
-    "setup": "npm-run-all -p setup:client setup:rest-server setup:socket-server setup:coderunner-service",
+    "setup": "npm-run-all setup:client setup:rest-server setup:socket-server setup:coderunner-service",
+    "test:client": "cd client && yarn test",
+    "test:rest-server": "cd rest-server && yarn test",
+    "test:socket-server": "cd socket-server && yarn test",
+    "test:coderunner-service": "cd services/coderunner-service && yarn test",
+    "test": "npm-run-all -p test:client test:rest-server test:socket-server test:coderunner-service",
     "env": "node bin/entry.js buildEnv"
   },
   "devDependencies": {

@@ -16,10 +16,10 @@ test('rest-server should run and return a 404 to {GET /}', async (done) => {
   done();
 });
 
-test('rest-server should not accept {POST /run} without a "code" body property', async (done) => {
+test('rest-server should not accept {POST /api/run} without a "code" body property', async (done) => {
   let resp;
   try {
-    resp = await axios.post(URL + '/run');
+    resp = await axios.post(URL + '/api/run');
   } catch (e) {
     expect(e.response.status).toBe(400);
   }
@@ -27,11 +27,11 @@ test('rest-server should not accept {POST /run} without a "code" body property',
   done();
 });
 
-test('rest-server should accept {POST /run} with a "code" body property', async (done) => {
+test('rest-server should accept {POST /api/run} with a "code" body property', async (done) => {
   let resp;
   const fixture = 'hello, world!';
   try {
-    resp = await axios.post(URL + '/run', { code: `console.log("${fixture}");` });
+    resp = await axios.post(URL + '/api/run', { code: `console.log("${fixture}");` });
     expect(resp.data.stdout).toBe(fixture + '\n');
   } catch (e) {
     console.log('Unexpected error in rest-server {POST /run} with code test. e = ', e);

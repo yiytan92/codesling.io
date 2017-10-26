@@ -37,10 +37,10 @@ describe('Client interactions', () => {
   test('Should add a new user to a room and receive the same text', async (done) => {
     done = after(2, done);
     expect.assertions(4);
-    const fixture = { text: '// your code here' };
+    const fixture = '// your code here';
     const handler = (text) => {
       try {
-        expect(JSON.stringify(text)).toBe(JSON.stringify(fixture));
+        expect(text.text).toBe(fixture);
         // make sure real test above does not throw
         expect(true).toBe(true);
       } catch (e) {
@@ -59,16 +59,17 @@ describe('Client interactions', () => {
   // Expects clients to be able to connect with one another
   test('Should be able to hear emissions from other clients', (done) => {
     expect.assertions(2);
+    const fixture = 'console.log(2)';
     client2.on('server.changed', (payload) => {
       try {
-        expect(payload.text).toBe('console.log(2)');
+        expect(payload.text).toBe(fixture);
         expect(true).toBe(true);
       } catch (e) {
         console.log(e.toString());
       }
       done();
     });
-    client1.emit('client.update', { text: 'console.log(2)'});
+    client1.emit('client.update', { text: fixture });
   });
 
   // Expects clients to disconnect
