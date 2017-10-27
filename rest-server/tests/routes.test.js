@@ -6,36 +6,34 @@ require('dotenv').load();
 const URL = `${process.env.HOST}:${process.env.PORT}`;
 
 test('rest-server should run and return a 404 to {GET /}', async (done) => {
-  let resp;
+  let resp = {};
   try {
     resp = await axios.get(URL + '/');
   } catch (e) {
     expect(e.response.status).toBe(404);
   }
-  expect(resp).toBe(undefined);
+  expect(resp).toMatchSnapshot();
   done();
 });
 
 test('rest-server should not accept {POST /api/run} without a "code" body property', async (done) => {
-  let resp;
+  let resp = {};
   try {
     resp = await axios.post(URL + '/api/run');
   } catch (e) {
     expect(e.response.status).toBe(400);
   }
-  expect(resp).toBeUndefined();
+  expect(resp).toMatchSnapshot();
   done();
 });
 
 test('rest-server should accept {POST /api/run} with a "code" body property', async (done) => {
-  let resp;
-  const fixture = 'hello, world!';
+  let resp = {};
   try {
-    resp = await axios.post(URL + '/api/run', { code: `console.log("${fixture}");` });
-    expect(resp.data.stdout).toBe(fixture + '\n');
+    resp = await axios.post(URL + '/api/run', { code: `console.log("hello, world!");` });
   } catch (e) {
     console.log('Unexpected error in rest-server {POST /run} with code test. e = ', e);
   }
-  expect(resp).toBeDefined();
+  expect(resp.data).toMatchSnapshot();
   done();
 });

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should evaluate code correctly and send back stdout 1`] = `
+"2
+"
+`;
+
+exports[`Should evaluate code correctly and send back stdout 2`] = `
+"hello world
+"
+`;
+
+exports[`Should respond to a {POST /submit-code} 1`] = `200`;
