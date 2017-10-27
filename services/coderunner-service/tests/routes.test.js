@@ -7,7 +7,7 @@ dotenv.load();
 const URL = `${process.env.HOST}:${process.env.PORT}`;
 
 test('Should respond to a {POST /submit-code}', async (done) => {
-  let resp;
+  let resp = {};
   try {
     resp = await axios.post(`${URL}/submit-code`, {
       code: "// comment",
