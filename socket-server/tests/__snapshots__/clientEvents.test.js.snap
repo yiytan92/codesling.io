@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`All client events should be functions client.disconnect should be a function 1`] = `"function"`;
+
+exports[`All client events should be functions client.ready should be a function 1`] = `"function"`;
+
+exports[`All client events should be functions client.update should be a function 1`] = `"function"`;
