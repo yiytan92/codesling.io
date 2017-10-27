@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rest-server should accept {POST /api/run} with a "code" body property 1`] = `
+Object {
+  "stdout": "hello, world!
+",
+  "success": true,
+}
+`;
+
+exports[`rest-server should not accept {POST /api/run} without a "code" body property 1`] = `Object {}`;
+
+exports[`rest-server should run and return a 404 to {GET /} 1`] = `Object {}`;
