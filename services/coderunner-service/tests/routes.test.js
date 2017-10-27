@@ -6,12 +6,6 @@ dotenv.load();
 
 const URL = `${process.env.HOST}:${process.env.PORT}`;
 
-// tuples of [expression, stdout] to test
-const fixtures = [
-  ["console.log(2)", "2"],
-  ["var x = 'hello world'; console.log(x);", "hello world"]
-];
-
 test('Should respond to a {POST /submit-code}', async (done) => {
   let resp;
   try {
@@ -21,20 +15,22 @@ test('Should respond to a {POST /submit-code}', async (done) => {
   } catch (e) {
     console.log('Unexpected error in coderunner-service {POST /submit-code}. e = ', e);
   }
-  expect(resp).toBeDefined();
+  expect(resp.status).toMatchSnapshot();
   done();
 });
 
 test('Should evaluate code correctly and send back stdout', async () => {
-  const asyncTestAgainstFixture = async (tuple) => {
-    const [ expression, stdout ] = tuple;
-    let resp;
+  // tuples of [expression, stdout] to test
+  const fixtures = [
+    "console.log(2)",
+    "var x = 'hello world'; console.log(x);",
+  ];
+  const makeSingleRequest = async (expression) => {
+    let resp = {};
     try {
       resp = await axios.post(`${URL}/submit-code`, {
         code: expression,
       });
-      expect(resp.data).toBe(stdout + '\n');
-      expect(true).toBe(true);
     } catch (e) {
       console.log(`Unexpected error in coderunner-service {POST /submit-code}.
         expected expression = ${expression}
@@ -42,7 +38,8 @@ test('Should evaluate code correctly and send back stdout', async () => {
         e = ${e}`
       );
     }
+    return resp.data;
   };
-  expect.assertions(fixtures.length * 2);
-  await Promise.all(fixtures.map(asyncTestAgainstFixture));
+  const tests = await Promise.all(fixtures.map(makeSingleRequest));
+  tests.forEach(result => expect(result).toMatchSnapshot());
 });
