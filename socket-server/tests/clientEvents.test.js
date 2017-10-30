@@ -1,17 +1,11 @@
-import ioClient from 'socket.io-client/dist/socket.io.js';
+import { each } from 'lodash';
 
 import clientEvents from '../src/clientEvents';
 
-describe('All client events should be functions', () => {
-  const fixtures = [
-    'client.ready',
-    'client.update',
-    'client.disconnect',
-  ];
-
+describe('All client event handlers should be functions', () => {
   test('all client events should be a function', () => {
-    fixtures.forEach(eventName => {
-      expect(typeof clientEvents[eventName]).toMatchSnapshot();
+    each(clientEvents, clientEventHandler => {
+      expect(typeof clientEventHandler).toMatchSnapshot();
     });
   });
 });
