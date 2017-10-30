@@ -1,12 +1,13 @@
-const ioClient = require('socket.io-client/dist/socket.io.js');
-const { after } = require('lodash');
-const delay = require('delay');
-const randomId = require('random-id');
+import ioClient from 'socket.io-client/dist/socket.io.js';
+import delay from 'delay';
+import randomId from 'random-id';
+import dotenv from 'dotenv';
+import { after } from 'lodash';
 
-const clientEvents = require('../src/clientEvents');
+import clientEvents from '../src/clientEvents';
 
-require('dotenv').config();
-require('dotenv').load();
+dotenv.config();
+dotenv.load();
 
 describe('Client interactions', () => {
   let client1;

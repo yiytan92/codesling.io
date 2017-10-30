@@ -1,8 +1,8 @@
-const {
+import {
   serverInitialState,
   serverChanged,
-  serverLeave
-} = require('../src/serverEvents');
+  serverLeave,
+} from '../src/serverEvents';
 
 // Expects all serverEvents to be functions
 test('serverInitialState should be a function', () => {
