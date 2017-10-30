@@ -2,42 +2,45 @@ import mongoose from 'mongoose';
 import bluebird from 'bluebird';
 
 import { User } from '../models/user';
+import { hashPassword, comparePasswords } from '../../helpers/bcrypt';
 import log from '../../lib/log';
 
 mongoose.Promise = bluebird;
 
-export const userFetch = async (req, res) => {
+export const authUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
-    log('User successfully fetched');
-    return res.status(200).json({
-      success: true,
-      user,
-    });
+    const authenticated = await comparePasswords(req.body.password, user.password);
+    if (authenticated) {
+      log('User authenticated');
+      res.status(200).send(user);
+    } else {
+      log('User is not authenticated');
+      res.status(204).send('User not authenticated');
+    }
   } catch (error) {
-    log('Error in userFetch ', error);
-    return res.status(400).json({
-      success: false,
-      error,
-    });
+    log('Error in authUser ', error);
+    res.status(400).send(error);
   }
 };
 
-export const userPost = async (req, res) => {
+export const hashUser = async (req, res) => {
   try {
-    const newUser = new User(req.body);
-    await newUser.save();
-    log('User successfully created');
-    return res.status(200).json({
-      success: true,
-      newUser,
-    });
+    const user = await User.findOne({ username: req.body.username });
+    if (user) {
+      log('User already exists');
+      res.status(204).send('User already exists');
+    } else {
+      const hashedPass = await hashPassword(req.body.password);
+      req.body.password = hashedPass;
+      const newUser = new User(req.body);
+      await newUser.save();
+      log('User successfully created');
+      res.status(200).send(newUser);
+    }
   } catch (error) {
-    log('Error in userPost ', error);
-    return res.status(400).json({
-      success: false,
-      error,
-    });
+    log('Error in hashUser ', error);
+    res.status(400).send(error);
   }
 };
 
