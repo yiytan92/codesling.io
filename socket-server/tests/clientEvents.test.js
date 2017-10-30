@@ -3,16 +3,15 @@ import ioClient from 'socket.io-client/dist/socket.io.js';
 import clientEvents from '../src/clientEvents';
 
 describe('All client events should be functions', () => {
-  // Expects all clientEvents to be functions
-  test('client.ready should be a function', () => {
-    expect(typeof clientEvents['client.ready']).toMatchSnapshot();
-  });
+  const fixtures = [
+    'client.ready',
+    'client.update',
+    'client.disconnect',
+  ];
 
-  test('client.update should be a function', () => {
-    expect(typeof clientEvents['client.update']).toMatchSnapshot();
-  });
-
-  test('client.disconnect should be a function', () => {
-    expect(typeof clientEvents['client.disconnect']).toMatchSnapshot();
+  test('all client events should be a function', () => {
+    fixtures.forEach(eventName => {
+      expect(typeof clientEvents[eventName]).toMatchSnapshot();
+    });
   });
 });
