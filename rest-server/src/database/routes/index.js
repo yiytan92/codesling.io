@@ -1,8 +1,8 @@
 import express from 'express';
 
 import {
-  userFetch,
-  userPost,
+  authUser,
+  hashUser,
   userUpdate,
   userDelete,
 } from '../controllers/userController';
@@ -17,8 +17,8 @@ const router = express.Router();
 
 // CRUD ops for users
 router.route('/users/:id')
-  .get(userFetch)
-  .post(userPost)
+  .get(authUser)
+  .post(hashUser)
   .put(userUpdate)
   .delete(userDelete);
 
