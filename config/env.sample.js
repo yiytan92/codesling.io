@@ -13,7 +13,7 @@ module.exports = {
     },
     directories: {
       'client': {
-        envPrefix: 'REACT_APP_'
+        _envPrefix: 'REACT_APP_'
       },
       'rest-server': {
         host: 'http://localhost',
