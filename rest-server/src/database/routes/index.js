@@ -12,7 +12,6 @@ import {
   roomUpdate,
   roomDelete,
 } from '../controllers/roomController';
-import { codeRunner } from '../controllers/codeRunnerController';
 
 const router = express.Router();
 
@@ -29,9 +28,5 @@ router.route('/rooms/:id')
   .post(roomPost)
   .put(roomUpdate)
   .delete(roomDelete);
-
-// Route for code runner service
-router.route('/run')
-  .post(codeRunner);
 
 module.exports = router;
