@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import CodeMirror from 'react-codemirror2';
 import io from 'socket.io-client/dist/socket.io.js';
 
@@ -9,7 +8,6 @@ import 'codemirror/mode/javascript/javascript.js';
 import 'codemirror/lib/codemirror.css';
 
 class CodeEditor extends Component {
-
   state = {
     text: '',
     stdout: ''
