@@ -40,6 +40,14 @@ payload: {
 }
 ```
 
+#### client.run
+
+Emit to the server when a user wants to run the code in the code editor
+
+```plaintext
+payload: {}
+```
+
 #### client.disconnect
 
 Emit to the server when the code editor component unmounts (user navigates away from the editor page)
@@ -71,6 +79,16 @@ Emitted by the server when the state of the code editor is altered by another cl
 ```plaintext
 payload: {
   text: STRING
+}
+```
+
+#### server.run
+
+Emitted by the server when the stdout from the code editor has been evaluated
+
+```plaintext
+payload: {
+  stdout: STRING
 }
 ```
 

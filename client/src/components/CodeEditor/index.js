@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import CodeMirror from 'react-codemirror2';
 import io from 'socket.io-client/dist/socket.io.js';
 
@@ -9,23 +8,13 @@ import 'codemirror/mode/javascript/javascript.js';
 import 'codemirror/lib/codemirror.css';
 
 class CodeEditor extends Component {
-
   state = {
     text: '',
     stdout: ''
   }
 
   runCode = () => {
-    axios.post(`${process.env.REACT_APP_REST_SERVER_URL}/api/run`, {
-      code: this.state.text
-    })
-      .then(({ data }) => {
-        const { stdout } = data;
-        this.setState({ stdout });
-      })
-      .catch(err => {
-        console.log('runCode post request err. err = ', err);
-      });
+    this.socket.emit('client.run');
   }
 
   componentDidMount() {
@@ -43,6 +32,10 @@ class CodeEditor extends Component {
 
     this.socket.on('server.changed', ({ text }) => {
       this.setState({ text });
+    });
+
+    this.socket.on('server.run', ({ stdout }) => {
+      this.setState({ stdout });
     });
   }
 

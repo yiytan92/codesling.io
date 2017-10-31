@@ -12,15 +12,5 @@ yarn start
 # API
 
 ```plaintext
-POST /run
-  request
-    body = JSON {
-      code: STRING (required)
-    }
-  response
-    status = 200 | 400
-    data = JSON {
-      success: BOOLEAN
-      message: STRING
-    }
+
 ```

@@ -1,8 +1,11 @@
+import axios from 'axios';
+
 import log from './lib/log';
 import {
   serverInitialState,
   serverChanged,
   serverLeave,
+  serverRun,
 } from './serverEvents';
 
 /**
@@ -32,10 +35,26 @@ const clientDisconnect = ({ io, room }) => {
   serverLeave({ io, room });
 };
 
+const clientRun = async ({ io, room }) => {
+  log('running code from client. room.get("text") = ', room.get('text'));
+  const url = process.env.CODERUNNER_SERVICE_URL;
+  const code = room.get('text');
+  try {
+    const resp = await axios.post(`${url}/submit-code`, {
+      code,
+    });
+    const stdout = resp.data;
+    serverRun({ io, room }, stdout);
+  } catch (e) {
+    log('error posting to coderunner service from socket server. e = ', e);
+  }
+};
+
 const clientEmitters = {
   'client.ready': clientReady,
   'client.update': clientUpdate,
   'client.disconnect': clientDisconnect,
+  'client.run': clientRun,
 };
 
 export default clientEmitters;

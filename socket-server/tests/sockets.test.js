@@ -1,12 +1,13 @@
-const ioClient = require('socket.io-client/dist/socket.io.js');
-const { after } = require('lodash');
-const delay = require('delay');
-const randomId = require('random-id');
+import ioClient from 'socket.io-client/dist/socket.io.js';
+import delay from 'delay';
+import randomId from 'random-id';
+import dotenv from 'dotenv';
+import { after } from 'lodash';
 
-const clientEvents = require('../src/clientEvents');
+import clientEvents from '../src/clientEvents';
 
-require('dotenv').config();
-require('dotenv').load();
+dotenv.config();
+dotenv.load();
 
 describe('Client interactions', () => {
   let client1;
@@ -67,7 +68,24 @@ describe('Client interactions', () => {
       }
       done();
     });
-    client1.emit('client.update', { text: 'console.log(2)' });
+    client1.emit('client.update', { text: 'console.log("Hello, World!")' });
+  });
+
+  test('Should be able to run code and have both clients receive stdout', (done) => {
+    done = after(2, done);
+    expect.assertions();
+    const serverRunHandler = ({ stdout }) => {
+      try {
+        expect(stdout).toMatchSnapshot();
+        expect(true).toBe(true);
+      } catch(e) {
+        console.log(e.toString());
+      }
+      done();
+    };
+    client1.on('server.run', serverRunHandler);
+    client2.on('server.run', serverRunHandler)
+    client1.emit('client.run');
   });
 
   // Expects clients to disconnect

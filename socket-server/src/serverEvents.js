@@ -23,3 +23,9 @@ export const serverLeave = ({ io, room }) => {
     .in(room.get('id'))
     .emit('server.leave');
 };
+
+export const serverRun = ({ io, room }, stdout) => {
+  io
+    .in(room.get('id'))
+    .emit('server.run', { stdout });
+};

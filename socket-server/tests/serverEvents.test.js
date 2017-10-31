@@ -1,18 +1,11 @@
-const {
-  serverInitialState,
-  serverChanged,
-  serverLeave
-} = require('../src/serverEvents');
+import { each } from 'lodash';
 
-// Expects all serverEvents to be functions
-test('serverInitialState should be a function', () => {
-  expect(typeof serverInitialState).toMatchSnapshot();
-});
+import * as serverEvents from '../src/serverEvents';
 
-test('serverChanged should be a function', () => {
-  expect(typeof serverChanged).toMatchSnapshot();
-});
-
-test('serverLeave should be a function', () => {
-  expect(typeof serverLeave).toMatchSnapshot();
+describe('All server events should be functions', () => {
+  test('all server events should be a function', () => {
+    each(serverEvents, (serverEventHandler) => {
+      expect(typeof serverEventHandler).toMatchSnapshot();
+    });
+  });
 });
