@@ -68,7 +68,24 @@ describe('Client interactions', () => {
       }
       done();
     });
-    client1.emit('client.update', { text: 'console.log(2)' });
+    client1.emit('client.update', { text: 'console.log("Hello, World!")' });
+  });
+
+  test('Should be able to run code and have both clients receive stdout', (done) => {
+    done = after(2, done);
+    expect.assertions();
+    const serverRunHandler = ({ stdout }) => {
+      try {
+        expect(stdout).toMatchSnapshot();
+        expect(true).toBe(true);
+      } catch(e) {
+        console.log(e.toString());
+      }
+      done();
+    };
+    client1.on('server.run', serverRunHandler);
+    client2.on('server.run', serverRunHandler)
+    client1.emit('client.run');
   });
 
   // Expects clients to disconnect
