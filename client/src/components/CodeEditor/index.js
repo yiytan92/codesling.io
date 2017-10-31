@@ -16,16 +16,7 @@ class CodeEditor extends Component {
   }
 
   runCode = () => {
-    axios.post(`${process.env.REACT_APP_REST_SERVER_URL}/api/run`, {
-      code: this.state.text
-    })
-      .then(({ data }) => {
-        const { stdout } = data;
-        this.setState({ stdout });
-      })
-      .catch(err => {
-        console.log('runCode post request err. err = ', err);
-      });
+    this.socket.emit('client.run');
   }
 
   componentDidMount() {
@@ -43,6 +34,10 @@ class CodeEditor extends Component {
 
     this.socket.on('server.changed', ({ text }) => {
       this.setState({ text });
+    });
+
+    this.socket.on('server.run', ({ stdout }) => {
+      this.setState({ stdout });
     });
   }
 
