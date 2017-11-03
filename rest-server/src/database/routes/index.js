@@ -11,6 +11,7 @@ import {
   roomPost,
   roomUpdate,
   roomDelete,
+  fetchNewSlingId,
 } from '../controllers/roomController';
 
 const router = express.Router();
@@ -28,5 +29,8 @@ router.route('/rooms/:id')
   .post(roomPost)
   .put(roomUpdate)
   .delete(roomDelete);
+
+router.route('/new-sling')
+  .get(fetchNewSlingId);
 
 module.exports = router;
