@@ -12,5 +12,13 @@ yarn start
 # API
 
 ```plaintext
-
+GET /api/new-sling
+  request
+    NA
+  response
+    status = 200 | 400
+    data = JSON {
+      success: BOOLEAN
+      slingId: STRING
+    }
 ```
