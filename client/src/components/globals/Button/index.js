@@ -26,12 +26,12 @@ const Button = ({
     <div className={`button-container ${className ? className : ''}`}>
       <button 
         id={id}
-        className={`${color}-text ${backgroundColor} ${!text ? 'no-text' : ''}`}
+        className={`${color}-text palette-${backgroundColor} ${!text ? 'no-text' : ''}`}
         onClick={onClick}
         type={type}
       >
         {loading ? (
-          <Loading />
+          <Loading color="black" />
         ) : (
           error ? error : (
             <span>
