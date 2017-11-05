@@ -1,0 +1,33 @@
+@import '../modules/colors';
+
+@if variable-exists('colors') {
+  @each $color, $_ in $colors {
+    .palette-#{$color} {
+      background-color: palette($color);
+      &:hover {
+        background-color: palette($color, 10);
+      }
+      &:active {
+        background-color: palette($color, -10);
+      }
+    }
+
+    button.palette-#{$color} {
+      box-shadow: 0px 3px 0px palette($color, -7);
+      &:hover {
+        box-shadow: 0px 3px 0px palette($color, 0);
+      }
+      &:active {
+        position: relative;
+        top: 3px;
+        box-shadow: 0px -3px 0px palette($color, 0);
+      }
+    }
+
+    .#{$color}-text {
+      color: palette($color);
+    }
+  }
+} @else {
+  @error '$colors is not defined. Did you import the modules/_colors.scss partial?'
+}
