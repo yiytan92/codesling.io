@@ -1,0 +1,16 @@
+@import '../../styles/modules/mq';
+
+.landing-page-container {
+  text-align: center;
+}
+
+.landing-page-logo {
+  width: 300px;
+  margin: 50px 0;
+}
+
+.pair-programming-btn-container button {
+  @include mq('sm') {
+    min-width: 300px;
+  }
+}
