@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rest-server should run and return a 404 to {GET /} 1`] = `Object {}`;
+exports[`rest-server should run and return a 404 to {GET /} 1`] = `404`;
+
+exports[`rest-server should run and return a 404 to {GET /} 2`] = `Object {}`;

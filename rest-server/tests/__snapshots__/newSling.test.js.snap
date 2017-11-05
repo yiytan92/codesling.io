@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rest-server should respond with a 200 to {GET /api/new-sling} 1`] = `200`;
