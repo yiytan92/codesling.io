@@ -1,3 +1,11 @@
+const startingText =
+`function hello() {
+  console.log('hello!');
+}
+
+hello();
+`;
+
 /**
  *
  *  Rooms store
@@ -14,7 +22,7 @@ export default class Rooms {
     if (!room) {
       room = new Map();
       room.set('id', roomId);
-      room.set('text', '// your code here');
+      room.set('text', startingText);
       this.store.set(roomId, room);
     }
     return room;
