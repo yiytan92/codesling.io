@@ -10,6 +10,7 @@ install:
   - cp config/env.sample.js config/env.js
   - yarn env -- development
 script:
+  - yarn build:client
   - yarn lint
   - yarn start:server &
   - sleep 10
