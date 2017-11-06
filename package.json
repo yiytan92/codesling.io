@@ -2,6 +2,7 @@
   "name": "codesling",
   "version": "1.0.0",
   "scripts": {
+    "build:client": "cd client && yarn build",
     "lint:client": "cd client && yarn run lint",
     "lint:rest-server": "cd rest-server && yarn run lint",
     "lint:socket-server": "cd socket-server && yarn run lint",

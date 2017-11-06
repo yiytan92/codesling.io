@@ -1,0 +1,17 @@
+body {
+  font-size: $fontSize;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: $defaultLineHeight;
+}
+
+@mixin fontSizeStyles($fontSizeMap) {
+  @each $el, $val in $fontSizeMap {
+    #{$el} {
+      font-size: $val;
+    }
+  }
+}
+
+@include fontSizeStyles($defaultFontSizes)
+@include mq('sm') { @include fontSizeStyles($smFontSizes) }
+@include mq('md') { @include fontSizeStyles($mdFontSizes) }

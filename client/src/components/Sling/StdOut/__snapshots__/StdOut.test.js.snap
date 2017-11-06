@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`displays text passed in 1`] = `
+<div
+  className="stdout"
+>
+  <div
+    key="stdout-singleline-idx-0"
+  >
+    Hello, world!
+  </div>
+</div>
+`;

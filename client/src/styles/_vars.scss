@@ -1,10 +1,26 @@
+$fontSize: 16px;
+$defaultLineHeight: 1.4;
+
+$codeFont: 'Operator Mono', Menlo, Monaco, 'Lucida Console', monospace;
+
+// spacers
+$gutter: 30px;
+
 $colors: (
   "white"    : #FFF,
   "gray"     : #d3d3d3,
-  "darkgray" : #35494e,
+  "darkgray" : #262626,
   "lightblue": #e8edf2,
   "blue"     : #155b92,
   "brown"    : #b3985c,
   "red"      : #c24040,
   "green"    : #4e9450
 );
+
+$breakpoints: (
+  "sm" : 480px,
+  "md": 768px,
+  "lg" : 1024px,
+  "xl" : 1200px
+);
+

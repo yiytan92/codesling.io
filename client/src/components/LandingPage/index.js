@@ -3,6 +3,9 @@ import axios from 'axios';
 
 import debug from '../../lib/debug';
 import Button from '../globals/Button';
+import Logo from '../globals/Logo';
+
+import './LandingPage.css';
 
 class LandingPage extends Component {
   state = {
@@ -28,8 +31,14 @@ class LandingPage extends Component {
 
   render() {
     return (
-      <div>
-        <Button 
+      <div className="landing-page-container">
+        <Logo
+          className="landing-page-logo"
+        />
+        <Button
+          className="pair-programming-btn-container"
+          backgroundColor="red"
+          color="white"
           loading={this.state.loading}
           text='Start Pair Programming!'
           onClick={this.handleStartProgrammingClick}
