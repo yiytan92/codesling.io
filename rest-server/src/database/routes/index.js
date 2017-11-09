@@ -7,30 +7,34 @@ import {
   userDelete,
 } from '../controllers/userController';
 import {
-  roomFetch,
-  roomPost,
-  roomUpdate,
-  roomDelete,
+  slingFetch,
+  slingPost,
+  slingUpdate,
+  slingDelete,
   fetchNewSlingId,
-} from '../controllers/roomController';
+} from '../controllers/slingController';
+import { verifyUserWithJWT } from '../../middleware/authentication';
 
 const router = express.Router();
 
+// Authorization route for login
+router.route('/users/auth')
+  .post(authUser);
+
 // CRUD ops for users
 router.route('/users/:id')
-  .get(authUser)
   .post(hashUser)
   .put(userUpdate)
   .delete(userDelete);
 
-// CRUD ops for rooms
-router.route('/rooms/:id')
-  .get(roomFetch)
-  .post(roomPost)
-  .put(roomUpdate)
-  .delete(roomDelete);
+// CRUD ops for slings
+router.route('/slings/:slingId')
+  .get(slingFetch)
+  .post(verifyUserWithJWT, slingPost)
+  .put(slingUpdate)
+  .delete(verifyUserWithJWT, slingDelete);
 
 router.route('/new-sling')
-  .get(fetchNewSlingId);
+  .get(verifyUserWithJWT, fetchNewSlingId);
 
 module.exports = router;

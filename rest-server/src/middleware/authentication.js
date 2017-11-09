@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+
 import log from '../lib/log';
 
 export const generateToken = ({ username, id }) => {
@@ -18,32 +19,34 @@ export const generateToken = ({ username, id }) => {
   return token;
 };
 
-export const refreshToken = (req, res, next) => {
-  try {
-    const token = generateToken(req.body.token);
-    next(token);
-  } catch (error) {
-    log('Error refreshing token');
-    next(error);
-  }
-};
+// export const refreshToken = (req, res, next) => {
+//   try {
+//     const token = jwt.decode(req.body.token, process.env.TOKEN_SECRET);
+//     const newToken = generateToken(req.body.token);
+//     next(newToken);
+//   } catch (e) {
+//     log('error refreshing token');
+//     next(e);
+//   }
+// };
 
 export const verifyUserWithJWT = (req, res, next) => {
   try {
-    jwt.verify(req.body.token, process.env.TOKEN_SECRET);
-    log('user authenticated');
+    jwt.verify(req.headers.authorization.slice(7), process.env.TOKEN_SECRET);
+    log('token verified');
     next();
-  } catch (error) {
-    log('user not authenticated');
+  } catch (e) {
+    log('token not verified');
+    next(e);
   }
 };
 
-export const logout = async (req, res, next) => {
-  const { accessToken } = req.body;
-  try {
-    // delete the token
-  } catch (error) {
-    log('Error logging out');
-    next(error);
-  }
-};
+// export const logout = async (req, res, next) => {
+//   const { accessToken } = req.body;
+//   try {
+//     // delete the token
+//   } catch (e) {
+//     log('error logging out');
+//     next(e);
+//   }
+// };

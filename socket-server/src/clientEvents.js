@@ -37,13 +37,13 @@ const clientDisconnect = ({ io, room }) => {
 
 const clientRun = async ({ io, room }) => {
   log('running code from client. room.get("text") = ', room.get('text'));
+
   const url = process.env.CODERUNNER_SERVICE_URL;
   const code = room.get('text');
+
   try {
-    const resp = await axios.post(`${url}/submit-code`, {
-      code,
-    });
-    const stdout = resp.data;
+    const { data } = await axios.post(`${url}/submit-code`, { code });
+    const stdout = data;
     serverRun({ io, room }, stdout);
   } catch (e) {
     log('error posting to coderunner service from socket server. e = ', e);
