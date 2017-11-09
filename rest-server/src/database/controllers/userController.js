@@ -3,17 +3,19 @@ import bluebird from 'bluebird';
 
 import { User } from '../models/user';
 import { hashPassword, comparePasswords } from '../../helpers/bcrypt';
+import { generateToken } from '../../middleware/authentication';
 import log from '../../lib/log';
 
 mongoose.Promise = bluebird;
 
 export const authUser = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findOne({ username: req.body.username });
     const authenticated = await comparePasswords(req.body.password, user.password);
     if (authenticated) {
+      const token = generateToken(user);
       log('User authenticated');
-      res.status(200).send(user);
+      res.status(200).send(token);
     } else {
       log('User is not authenticated');
       res.status(204).send('User not authenticated');
