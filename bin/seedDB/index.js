@@ -25,7 +25,7 @@ try {
     .forEach(option => {
       commandObj[option];
     });
-    console.log(`successfully fulfilled ${command} command.`);
+  console.log(`successfully fulfilled ${command} command.`);
 } catch (e) {
   console.log(`error fulfilling ${command} command.`);
   process.exit(1);
