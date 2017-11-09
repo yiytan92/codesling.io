@@ -2,6 +2,7 @@ node_modules/
 
 # Environment Configs
 config/env.js
+config/secrets.js
 
 # Misc
 .idea/
