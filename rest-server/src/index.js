@@ -14,4 +14,9 @@ app.use(cors());
 
 app.use('/api', router);
 
+// app.use((e, req, res, next) => {
+//   log('error: ', e)
+//   res.status(500).send(e);
+// })
+
 app.listen(port, () => log(`rest-server listening on port ${port}`));
