@@ -2,7 +2,10 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import LandingPage from '../LandingPage';
-import Sling from '../Sling';
+import ProtectedSling from '../Sling';
+import Login from '../Authentication/Login'
+import Signup from '../Authentication/Signup'
+// import ErrorBoundary from '../ErrorHandling/ErrorBoundary';
 
 import './App.css';
 
@@ -10,7 +13,11 @@ const App = () => {
   return (
     <div className="app">
       <Switch>
-        <Route path='/:socketID' component={Sling} />
+        <Route path='/login' component={Login} />
+        <Route path='/signup' component={Signup} />
+        {/* <ErrorBoundary> */}
+          <Route path='/:slingId' component={ProtectedSling} />
+        {/* </ErrorBoundary> */}
         <Route path='/' component={LandingPage} />
       </Switch>
     </div>
