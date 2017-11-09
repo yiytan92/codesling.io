@@ -25,8 +25,8 @@ try {
     .forEach(option => {
       commandObj[option];
     });
-    console.log(`successfully ${command === 'seed' ? 'seeded' : 'wiped'} database.`);
+    console.log(`successfully fulfilled ${command} command.`);
 } catch (e) {
-  console.log(`error ${command}ing database. e = ${e}`);
+  console.log(`error fulfilling ${command} command.`);
   process.exit(1);
 }
