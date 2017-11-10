@@ -33,6 +33,10 @@ yarn start:client # in one window
 yarn start:server # in another window
 ```
 
+# Testing
+
+More information on [testing](testing.md) can be found here.
+
 # System Architecture
 
 The system architecture of Codesling consists of these main sub applications:
