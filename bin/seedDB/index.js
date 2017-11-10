@@ -1,9 +1,11 @@
 import _ from 'lodash';
 import path from 'path';
-require('dotenv').config({ path: path.resolve(__dirname, '../../rest-server/.env') });
+import dotenv from 'dotenv';
 
 import dbConfigs from './config';
 import help from './help';
+
+dotenv.config({ path: path.resolve(__dirname, '../../rest-server/.env') });
 
 const command = process.argv[3];
 const commandObj = dbConfigs[command];
@@ -23,7 +25,7 @@ try {
   Object
     .keys(commandObj)
     .forEach(option => {
-      commandObj[option];
+      commandObj[option]();
     });
   console.log(`successfully fulfilled ${command} command.`);
 } catch (e) {
