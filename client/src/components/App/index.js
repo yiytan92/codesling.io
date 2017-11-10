@@ -5,7 +5,7 @@ import LandingPage from '../LandingPage';
 import ProtectedSling from '../Sling';
 import Login from '../Authentication/Login'
 import Signup from '../Authentication/Signup'
-// import ErrorBoundary from '../ErrorHandling/ErrorBoundary';
+import ErrorBoundary from '../Error/ErrorBoundary';
 
 import './App.css';
 
@@ -15,9 +15,12 @@ const App = () => {
       <Switch>
         <Route path='/login' component={Login} />
         <Route path='/signup' component={Signup} />
-        {/* <ErrorBoundary> */}
-          <Route path='/:slingId' component={ProtectedSling} />
-        {/* </ErrorBoundary> */}
+
+        <Route path='/:slingId' component={(props) => (
+          <ErrorBoundary>
+            <ProtectedSling {...props} />
+          </ErrorBoundary>
+        )} />
         <Route path='/' component={LandingPage} />
       </Switch>
     </div>
