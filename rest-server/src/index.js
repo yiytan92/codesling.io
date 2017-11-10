@@ -12,11 +12,13 @@ const port = 4990 || process.env.PORT;
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use('/api', router);
+app.all('/*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Authorization, Content-Type");
+  res.header("Access-Control-Allow-Methods", 'GET, POST, PUT, DELETE');
+  next();
+});
 
-// app.use((e, req, res, next) => {
-//   log('error: ', e)
-//   res.status(500).send(e);
-// })
+app.use('/api', router);
 
 app.listen(port, () => log(`rest-server listening on port ${port}`));
