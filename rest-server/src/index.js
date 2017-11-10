@@ -12,10 +12,10 @@ const port = 4990 || process.env.PORT;
 app.use(bodyParser.json());
 app.use(cors());
 
-app.all('/*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Authorization, Content-Type");
-  res.header("Access-Control-Allow-Methods", 'GET, POST, PUT, DELETE');
+app.all('/*', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Authorization, Content-Type');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   next();
 });
 

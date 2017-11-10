@@ -20,7 +20,8 @@ module.exports = {
         port: '4990',
         mongo_host: 'mongodb://localhost/',
         mongo_db_name: 'codesling',
-        mongo_port: 27017
+        mongo_port: 27017,
+        token_secret: 'insert secret here'
       },
       'socket-server': {
         host: 'http://localhost',
