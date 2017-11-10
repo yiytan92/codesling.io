@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import Sling from './Sling';
-import ErrorBoundary from '../ErrorHandling/ErrorBoundary';
 
 class ProtectedSling extends Component {
-  state = {  }
-
   async componentDidMount() {
-    const sling = await this.slingExistsinDB();
-    if (sling) {
-      this.props.history.push(`/${this.props.match.params.slingId}`);
-    } else {
-      throw new Error ('Invalid sling');
+    const slingExists = await this.slingExistsinDB();
+    if (!slingExists) {
+      throw new Error('error')
+      // this.props.history.push(`/${this.props.match.params.slingId}`);
     }
   }
   
@@ -20,14 +16,12 @@ class ProtectedSling extends Component {
     const slingId = this.props.match.params.slingId
     const { data } = await axios.get(`${process.env.REACT_APP_REST_SERVER_URL}/api/slings/${slingId}`);
     const { sling } = data
-    return sling;
+    return !!sling;
   }
 
   render() {
     return (
-      // <ErrorBoundary>
-        <Sling slingId={this.props.match.params.slingId}/>
-      // </ErrorBoundary>
+      <Sling slingId={this.props.match.params.slingId}/>
     );
   }
 }

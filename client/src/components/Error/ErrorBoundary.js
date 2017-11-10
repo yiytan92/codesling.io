@@ -10,13 +10,11 @@ class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.log('so we never in here huh')
     this.setState({ error, errorInfo });
   }
 
   // Add a svg or some picture depiciting an error 
   render() {
-    console.log('are we ever in here??')
     if (this.state.error) {
       return (
         <div>
