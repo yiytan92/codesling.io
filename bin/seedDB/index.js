@@ -29,5 +29,3 @@ try {
   console.log(`error fulfilling ${command} command.`);
   process.exit(1);
 } 
-
-console.log(`successfully fulfilled ${command} command.`);
