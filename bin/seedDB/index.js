@@ -22,13 +22,12 @@ if (!process.env.MONGO_DB_NAME) {
 }
 
 try {
-  Object
-    .keys(commandObj)
-    .forEach(option => {
-      commandObj[option]();
-    });
-  console.log(`successfully fulfilled ${command} command.`);
+  _.each(commandObj, (option) => {
+    option();
+  })
 } catch (e) {
   console.log(`error fulfilling ${command} command.`);
   process.exit(1);
-}
+} 
+
+console.log(`successfully fulfilled ${command} command.`);
