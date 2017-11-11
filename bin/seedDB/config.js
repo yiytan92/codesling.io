@@ -15,7 +15,7 @@ const dbConfigs = {
           console.log(`error seeding user data. error = ${err}`);
           process.exit(1);
         } else {
-          console.log(`success seeding user data. success = ${stdout ? 'stdout = ' + stdout : 'stderr = ' + stderr}`);
+          console.log(`success seeding user data. success ${stdout ? '(stdout) ' + stdout : '(stderr) ' + stderr}`);
         };
       }
     ),
@@ -31,7 +31,7 @@ const dbConfigs = {
           console.log(`error seeding room data. error = ${err}`);
           process.exit(1);
         } else {
-          console.log(`success seeding room data. success = ${stdout ? 'stdout = ' + stdout : 'stderr = ' + stderr}`);
+          console.log(`success seeding room data. success ${stdout ? '(stdout) ' + stdout : '(stderr) ' + stderr}`);
         };
       }
     )
@@ -46,7 +46,7 @@ const dbConfigs = {
           console.log(`error wiping database. error = ${err}`);
           process.exit(1);
         } else {
-          console.log(`success wiping database. success = ${stdout ? 'stdout = ' + stdout : 'stderr = ' + stderr}`);
+          console.log(`success wiping database. success ${stdout ? '(stdout) ' + stdout : '(stderr) ' + stderr}`);
         };
       }
     )
