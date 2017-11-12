@@ -15,7 +15,6 @@ const App = () => {
       <Switch>
         <Route path='/login' component={Login} />
         <Route path='/signup' component={Signup} />
-
         <Route path='/:slingId' component={(props) => (
           <ErrorBoundary>
             <ProtectedSling {...props} />
