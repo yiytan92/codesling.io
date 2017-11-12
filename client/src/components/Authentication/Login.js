@@ -13,14 +13,19 @@ class Login extends Component {
   }
 
   handleChange = (event) => {
-    const name = event.target.name;
+    const { name } = event.target;
     this.setState({ [name]: event.target.value });
   }
 
-  loginClick = async () => {
+  handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    const {
+      username,
+      password,
+    } = this.state;
     const { data } = await axios.post(`${process.env.REACT_APP_REST_SERVER_URL}/api/users/auth`, {
-      username: this.state.username,
-      password: this.state.password,
+      username,
+      password,
     });
     const { accessToken } = data;
     localStorage.setItem('token', accessToken);
@@ -30,13 +35,22 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <input name='username' placeholder='username' onChange={this.handleChange} />
-        <br />
-        <input name='password' placeholder='password' onChange={this.handleChange} />
-        <Button
-          text='Log In'
-          onClick={this.loginClick}
-        />
+        <form onSubmit={this.handleLoginSubmit}>
+          <input
+            name='username'
+            placeholder='username'
+            onChange={this.handleChange}
+          />
+          <input
+            name='password'
+            placeholder='password'
+            onChange={this.handleChange}
+          />
+          <Button
+            text='Log In'
+            onClick={this.loginClick}
+          />
+        </form>
       </div>
     );
   }

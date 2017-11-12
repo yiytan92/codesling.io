@@ -17,10 +17,15 @@ class Signup extends Component {
     this.setState({ [name]: event.target.value });
   }
 
-  signupClick = async () => {
+  handleSignupSubmit = async (e) => {
+    e.preventDefault();
+    const { 
+      username,
+      password,
+    } = this.state;
     await axios.post(`${process.env.REACT_APP_REST_SERVER_URL}/api/users/false`, {
-      username: this.state.username,
-      password: this.state.password
+      username,
+      password,
     });
     this.props.history.push('/');
   }
@@ -28,13 +33,21 @@ class Signup extends Component {
   render() {
     return (
       <div>
-        <input name='username' placeholder='username' onChange={this.handleInputChange} />
-        <br />
-        <input name='password' placeholder='password' onChange={this.handleInputChange} />
-        <Button
-          text='Sign Up'
-          onClick={this.signupClick}
-        />
+        <form onSubmit={this.handleSignupSubmit}>
+          <input
+            name='username'
+            placeholder='username'
+            onChange={this.handleInputChange}
+          />
+          <input
+            name='password'
+            placeholder='password'
+            onChange={this.handleInputChange}
+          />
+          <Button
+            text='Sign Up'
+          />
+        </form>
       </div>
     );
   }
