@@ -11,24 +11,8 @@ export const generateToken = ({ username, id }) => {
     id,
   }, process.env.TOKEN_SECRET);
 
-  // token.refreshToken = jwt.sign({
-  //   username,
-  //   id,
-  // }, process.env.TOKEN_SECRET);
-
   return token;
 };
-
-// export const refreshToken = (req, res, next) => {
-//   try {
-//     const token = jwt.decode(req.body.token, process.env.TOKEN_SECRET);
-//     const newToken = generateToken(req.body.token);
-//     next(newToken);
-//   } catch (e) {
-//     log('error refreshing token');
-//     next(e);
-//   }
-// };
 
 export const verifyUserWithJWT = (req, res, next) => {
   try {
@@ -40,13 +24,3 @@ export const verifyUserWithJWT = (req, res, next) => {
     next(e);
   }
 };
-
-// export const logout = async (req, res, next) => {
-//   const { accessToken } = req.body;
-//   try {
-//     // delete the token
-//   } catch (e) {
-//     log('error logging out');
-//     next(e);
-//   }
-// };

@@ -6,7 +6,7 @@ const uri = `${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.M
 mongoose.connect(uri);
 
 mongoose.connection.on('connected', () => {
-  log('Mongoose default connection open to mongodb://127.0.0.1:27017/codesling');
+  log(`Mongoose default connection open to ${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB_NAME}`);
 });
 
 mongoose.connection.on('error', (error) => {
