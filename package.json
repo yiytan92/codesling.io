@@ -23,7 +23,8 @@
     "test:socket-server": "cd socket-server && yarn test",
     "test:coderunner-service": "cd services/coderunner-service && yarn test",
     "test": "npm-run-all -p test:client test:rest-server test:socket-server test:coderunner-service",
-    "env": "node bin/entry.js buildEnv"
+    "env": "node bin/entry.js buildEnv",
+    "db": "node bin/entry.js seedDB"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.1"
@@ -32,6 +33,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-register": "^6.26.0",
+    "dotenv": "^4.0.0",
     "lodash": "^4.17.4"
   }
 }

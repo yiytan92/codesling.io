@@ -33,6 +33,17 @@ yarn start:client # in one window
 yarn start:server # in another window
 ```
 
+* Seed/Wipe the database
+
+```bash
+yarn db seed # wipes pre-existing data and seeds data
+yarn db wipe # wipes database
+```
+
+# Testing
+
+More information on [testing](testing.md) can be found here.
+
 # System Architecture
 
 The system architecture of Codesling consists of these main sub applications:
