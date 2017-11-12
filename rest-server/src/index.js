@@ -10,7 +10,10 @@ const app = express();
 const port = 4990 || process.env.PORT;
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  allowedHeaders: 'Content-Type,Authorization',
+  methods: ['GET, POST, PUT, DELETE', 'OPTIONS'],
+}));
 
 app.use('/api', router);
 
