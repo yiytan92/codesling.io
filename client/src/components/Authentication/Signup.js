@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import Input from '../globals/forms/Input';
 import Button from '../globals/Button/';
+
+import './Auth.css';
 
 class Signup extends Component {
   constructor() {
@@ -12,8 +15,8 @@ class Signup extends Component {
     }
   }
 
-  handleInputChange = (event) => {
-    const name = event.target.name;
+  handleChange = (event) => {
+    const { name } = event.target;
     this.setState({ [name]: event.target.value });
   }
 
@@ -32,17 +35,23 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSignupSubmit}>
-          <input
+      <div className="signup-form-container">
+        <form 
+          className="auth-form"
+          onSubmit={this.handleSignupSubmit}
+        >
+          <h2>Sign Up</h2>
+          <Input
+            type='text'
             name='username'
             placeholder='username'
-            onChange={this.handleInputChange}
+            onChange={this.handleChange}
           />
-          <input
+          <Input
+            type='password'
             name='password'
             placeholder='password'
-            onChange={this.handleInputChange}
+            onChange={this.handleChange}
           />
           <Button
             text='Sign Up'

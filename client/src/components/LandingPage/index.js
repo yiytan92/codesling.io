@@ -56,7 +56,7 @@ class LandingPage extends Component {
             className="landing-page-logo"
           />
           <Button
-            className="pair-programming-btn-container"
+            className="auth-btn-container"
             backgroundColor="red"
             color="white"
             loading={this.state.loading}
@@ -72,7 +72,7 @@ class LandingPage extends Component {
             className="landing-page-logo"
           />
           <Button
-            className="pair-programming-btn-container"
+            className="auth-btn-container"
             backgroundColor="red"
             color="white"
             loading={this.state.loading}
@@ -80,7 +80,7 @@ class LandingPage extends Component {
             onClick={this.handleLoginClick}
           />
           <Button
-            className="pair-programming-btn-container"
+            className="auth-btn-container"
             backgroundColor="red"
             color="white"
             loading={this.state.loading}

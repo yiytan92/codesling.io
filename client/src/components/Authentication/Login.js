@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import Input from '../globals/forms/Input';
 import Button from '../globals/Button/';
+
+import './Auth.css';
 
 class Login extends Component {
   constructor() {
@@ -34,14 +37,20 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleLoginSubmit}>
-          <input
+      <div className="login-form-container">
+        <form 
+          className="auth-form"
+          onSubmit={this.handleLoginSubmit}
+        >
+          <h2>Login</h2>
+          <Input
+            type='text'
             name='username'
             placeholder='username'
             onChange={this.handleChange}
           />
-          <input
+          <Input
+            type='password'
             name='password'
             placeholder='password'
             onChange={this.handleChange}

@@ -9,7 +9,9 @@
   margin: 50px 0;
 }
 
-.pair-programming-btn-container button {
+.auth-btn-container button {
+  margin-bottom: 20px;
+  
   @include mq('sm') {
     min-width: 300px;
   }
