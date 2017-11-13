@@ -9,12 +9,9 @@ import './Auth.scss';
 import '../LandingPage/LandingPage.css';
 
 class Login extends Component {
-  constructor() {
-    super();
-    this.state = {
-      username: '',
-      password: ''
-    }
+  state = {
+    username: '',
+    password: ''
   }
 
   handleChange = (event) => {

@@ -8,12 +8,9 @@ import Logo from '../globals/Logo';
 import './Auth.scss';
 
 class Signup extends Component {
-  constructor() {
-    super();
-    this.state = {
-      username: '',
-      password: ''
-    }
+  state = {
+    username: '',
+    password: ''
   }
 
   handleChange = (event) => {
