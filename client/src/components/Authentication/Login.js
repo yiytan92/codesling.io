@@ -5,7 +5,7 @@ import Input from '../globals/forms/Input';
 import Button from '../globals/Button/';
 import Logo from '../globals/Logo';
 
-import './Auth.css';
+import './Auth.scss';
 import '../LandingPage/LandingPage.css';
 
 class Login extends Component {
@@ -40,6 +40,9 @@ class Login extends Component {
   render() {
     return (
       <div className="login-form-container">
+        <Logo
+          className="landing-page-logo"
+        />
         <form 
           className="auth-form"
           onSubmit={this.handleLoginSubmit}

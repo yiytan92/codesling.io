@@ -3,8 +3,9 @@ import axios from 'axios';
 
 import Input from '../globals/forms/Input';
 import Button from '../globals/Button/';
+import Logo from '../globals/Logo';
 
-import './Auth.css';
+import './Auth.scss';
 
 class Signup extends Component {
   constructor() {
@@ -19,7 +20,6 @@ class Signup extends Component {
     const { name } = event.target;
     this.setState({ [name]: event.target.value });
   }
-
 
   signupClick = async (e) => {
     e.preventDefault();
@@ -39,9 +39,12 @@ class Signup extends Component {
   render() {
     return (
       <div className="signup-form-container">
+        <Logo
+          className="landing-page-logo"
+        />
         <form 
           className="auth-form"
-          onSubmit={this.handleSignupSubmit}
+          onSubmit={this.signupClick}
         >
           <h2>Sign Up</h2>
           <Input
