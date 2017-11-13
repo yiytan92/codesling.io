@@ -3,8 +3,10 @@ import axios from 'axios';
 
 import Input from '../globals/forms/Input';
 import Button from '../globals/Button/';
+import Logo from '../globals/Logo';
 
 import './Auth.css';
+import '../LandingPage/LandingPage.css';
 
 class Login extends Component {
   constructor() {

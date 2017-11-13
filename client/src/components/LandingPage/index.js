@@ -8,15 +8,20 @@ import Logo from '../globals/Logo';
 import './LandingPage.css';
 
 class LandingPage extends Component {
-  state = {
-    authenticated: false,
-    loading: false,
-    slingId: ''
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      valid: true,
+      loading: false,
+      slingId: ''
+    }
   }
 
   componentDidMount() {
-    if(localStorage.token) {
-      this.setState({ authenticated: true });
+    if (this.props.history.location.state) {
+      const { valid } = this.props.history.location.state;
+      this.setState({ valid });
     }
   }
 
@@ -28,7 +33,9 @@ class LandingPage extends Component {
         }
       });
       const { slingId } = data;
-      this.props.history.push(`/${slingId}`);
+      this.props.history.push({
+        pathname: `/${slingId}`,
+      });
     } catch (e) {
       debug('error retrieving slingId. e = ', e);
     }
@@ -40,16 +47,9 @@ class LandingPage extends Component {
     }, this.fetchSlingId);
   }
 
-  handleLoginClick = () => {
-    this.props.history.push('/login')
-  }
-  
-  handleSetupClick = () => {
-    this.props.history.push('/signup')
-  }
-
   render() {
-    if (this.state.authenticated) {
+    const { valid } = this.state;
+    if (valid) {
       return (
         <div className="landing-page-container">
           <Logo
@@ -64,18 +64,24 @@ class LandingPage extends Component {
             onClick={this.handleStartProgrammingClick}
           />
         </div>
-    )
-  } else {
+      )
+    } else {
       return (
         <div className="landing-page-container">
           <Logo
             className="landing-page-logo"
           />
+          <br />
+          Invalid Sling! Create One Here
+          <br />
+          <br />
+          <br />
           <Button
             className="auth-btn-container"
             backgroundColor="red"
             color="white"
             loading={this.state.loading}
+<<<<<<< HEAD
             text='Log In'
             onClick={this.handleLoginClick}
           />
@@ -86,6 +92,10 @@ class LandingPage extends Component {
             loading={this.state.loading}
             text='Sign Up'
             onClick={this.handleSetupClick}
+=======
+            text='Start Pair Programming!'
+            onClick={this.handleStartProgrammingClick}
+>>>>>>> [ops] - signup sets token into localstorage, login landingpage styling, global protected component
           />
         </div>
       )

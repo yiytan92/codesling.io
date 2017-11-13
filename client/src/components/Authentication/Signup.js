@@ -20,16 +20,19 @@ class Signup extends Component {
     this.setState({ [name]: event.target.value });
   }
 
-  handleSignupSubmit = async (e) => {
+
+  signupClick = async (e) => {
     e.preventDefault();
     const { 
       username,
       password,
     } = this.state;
-    await axios.post(`${process.env.REACT_APP_REST_SERVER_URL}/api/users/false`, {
+    const { data } = await axios.post(`${process.env.REACT_APP_REST_SERVER_URL}/api/users/false`, {
       username,
-      password,
+      password
     });
+    const { accessToken } = data;
+    localStorage.setItem('token', accessToken);
     this.props.history.push('/');
   }
 
