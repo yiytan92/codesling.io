@@ -8,13 +8,9 @@ import Logo from '../globals/Logo';
 import '../LandingPage/LandingPage.css';
 
 class LandingPage extends Component {
-  constructor(props) {
-    super(props);
-    
-    this.state = {
-      loading: false,
-      slingId: ''
-    }
+  state = {
+    loading: false,
+    slingId: ''
   }
 
   fetchSlingId = async () => {
