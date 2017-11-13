@@ -18,13 +18,6 @@ class LandingPage extends Component {
     }
   }
 
-  componentDidMount() {
-    if (this.props.history.location.state) {
-      const { valid } = this.props.history.location.state;
-      this.setState({ valid });
-    }
-  }
-
   fetchSlingId = async () => {
     try {
       const { data } = await axios.get(`${process.env.REACT_APP_REST_SERVER_URL}/api/new-sling`,{
@@ -48,6 +41,7 @@ class LandingPage extends Component {
   }
 
   render() {
+<<<<<<< HEAD
     const { valid } = this.state;
     if (valid) {
       return (
@@ -100,6 +94,23 @@ class LandingPage extends Component {
         </div>
       )
     }
+=======
+    return (
+      <div className="landing-page-container">
+        <Logo
+          className="landing-page-logo"
+        />
+        <Button
+          className="pair-programming-btn-container"
+          backgroundColor="red"
+          color="white"
+          loading={this.state.loading}
+          text='Start Pair Programming!'
+          onClick={this.handleStartProgrammingClick}
+        />
+      </div>
+    )
+>>>>>>> [ops] - client route for /slingError, LandingPage
   }
 }
 

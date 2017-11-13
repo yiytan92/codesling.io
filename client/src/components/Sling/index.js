@@ -10,8 +10,7 @@ class ProtectedSling extends Component {
     const slingExists = await this.slingExistsinDB();
     if (!slingExists) {
       this.props.history.push({
-        pathname: '/',
-        state: { valid: false }
+        pathname: '/slingError',
       });
     }
   }

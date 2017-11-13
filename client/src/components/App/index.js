@@ -5,6 +5,7 @@ import LandingPage from '../LandingPage';
 import ProtectedSling from '../Sling';
 import Login from '../Authentication/Login'
 import Signup from '../Authentication/Signup'
+import InvalidSlingError from '../globals/Error/InvalidSlingError';
 // import ProtectedLandingPage from '../LandingPage/'
 import Protected from '../globals/Protected';
 
@@ -16,6 +17,7 @@ const App = () => {
       <Switch>
         <Route path='/login' component={Login} />
         <Route path='/signup' component={Signup} />
+        <Route path='/slingError' component={InvalidSlingError} />
         <Route path='/:slingId' component={ProtectedSling} />
         <Route path='/' component={(props) => (
           <Protected component={LandingPage} {...props} />
