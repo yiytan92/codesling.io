@@ -2,7 +2,7 @@ import express from 'express';
 
 import {
   authUser,
-  hashUser,
+  createUser,
   userUpdate,
   userDelete,
 } from '../controllers/userController';
@@ -13,6 +13,10 @@ import {
   slingDelete,
   fetchNewSlingId,
 } from '../controllers/slingController';
+import {
+  slingMsgFetch,
+  slingMsgPost,
+} from '../controllers/slingMsgController';
 import { verifyUserWithJWT } from '../../middleware/authentication';
 
 const router = express.Router();
@@ -23,7 +27,7 @@ router.route('/users/auth')
 
 // CRUD ops for users
 router.route('/users/:id')
-  .post(hashUser)
+  .post(createUser)
   .put(userUpdate)
   .delete(userDelete);
 
@@ -36,5 +40,9 @@ router.route('/slings/:slingId')
 
 router.route('/new-sling')
   .get(verifyUserWithJWT, fetchNewSlingId);
+
+router.route('/slings/messages/:slingId')
+  .get(slingMsgFetch)
+  .post(slingMsgPost);
 
 module.exports = router;

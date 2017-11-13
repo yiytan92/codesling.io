@@ -26,23 +26,23 @@ export const authUser = async (req, res) => {
   }
 };
 
-export const hashUser = async (req, res) => {
+export const createUser = async (req, res) => {
   try {
     const user = await User.findOne({ username: req.body.username });
     if (user) {
       log('User already exists');
-      res.status(204).send('User already exists');
-    } else {
-      const hashedPass = await hashPassword(req.body.password);
-      req.body.password = hashedPass;
-      const newUser = new User(req.body);
-      await newUser.save();
-      log('User successfully created');
-      res.status(200).send(newUser);
+      return res.status(204).send('User already exists');
     }
+    const password = await hashPassword(req.body.password);
+    const newUser = new User(Object.assign(req.body, { password }));
+    await newUser.save();
+    log('User successfully created');
+
+    const token = generateToken(req.body);
+    return res.status(200).send(token);
   } catch (error) {
-    log('Error in hashUser ', error);
-    res.status(400).send(error);
+    log('Error in createUser ', error);
+    return res.status(400).send(error);
   }
 };
 
