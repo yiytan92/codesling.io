@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import Input from '../globals/forms/Input';
 import Button from '../globals/Button/';
+import Logo from '../globals/Logo';
+
+import './Auth.scss';
+import '../LandingPage/LandingPage.css';
 
 class Login extends Component {
-  constructor() {
-    super();
-    this.state = {
-      username: '',
-      password: ''
-    }
+  state = {
+    username: '',
+    password: ''
   }
 
   handleChange = (event) => {
-    const name = event.target.name;
+    const { name } = event.target;
     this.setState({ [name]: event.target.value });
   }
 
-  loginClick = async () => {
+  handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    const {
+      username,
+      password,
+    } = this.state;
     const { data } = await axios.post(`${process.env.REACT_APP_REST_SERVER_URL}/api/users/auth`, {
-      username: this.state.username,
-      password: this.state.password,
+      username,
+      password,
     });
     const { accessToken } = data;
     localStorage.setItem('token', accessToken);
@@ -29,14 +36,32 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <input name='username' placeholder='username' onChange={this.handleChange} />
-        <br />
-        <input name='password' placeholder='password' onChange={this.handleChange} />
-        <Button
-          text='Log In'
-          onClick={this.loginClick}
+      <div className="login-form-container">
+        <Logo
+          className="landing-page-logo"
         />
+        <form 
+          className="auth-form"
+          onSubmit={this.handleLoginSubmit}
+        >
+          <h2>Login</h2>
+          <Input
+            type='text'
+            name='username'
+            placeholder='username'
+            onChange={this.handleChange}
+          />
+          <Input
+            type='password'
+            name='password'
+            placeholder='password'
+            onChange={this.handleChange}
+          />
+          <Button
+            text='Log In'
+            onClick={this.loginClick}
+          />
+        </form>
       </div>
     );
   }

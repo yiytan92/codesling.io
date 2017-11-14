@@ -4,11 +4,14 @@ import axios from 'axios';
 import Sling from './Sling';
 
 class ProtectedSling extends Component {
+  state = { }
+
   async componentDidMount() {
     const slingExists = await this.slingExistsinDB();
     if (!slingExists) {
-      throw new Error('error')
-      // this.props.history.push(`/${this.props.match.params.slingId}`);
+      this.props.history.push({
+        pathname: '/slingError',
+      });
     }
   }
   
@@ -21,7 +24,7 @@ class ProtectedSling extends Component {
 
   render() {
     return (
-      <Sling slingId={this.props.match.params.slingId}/>
+      <Sling slingId={this.props.match.params.slingId} />
     );
   }
 }

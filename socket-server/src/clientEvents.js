@@ -6,6 +6,7 @@ import {
   serverChanged,
   serverLeave,
   serverRun,
+  serverMessage,
 } from './serverEvents';
 
 /**
@@ -50,11 +51,17 @@ const clientRun = async ({ io, room }) => {
   }
 };
 
+const clientMessage = ({ io, room }, payload) => {
+  log('client message heard');
+  serverMessage({ io, room }, payload);
+};
+
 const clientEmitters = {
   'client.ready': clientReady,
   'client.update': clientUpdate,
   'client.disconnect': clientDisconnect,
   'client.run': clientRun,
+  'client.message': clientMessage,
 };
 
 export default clientEmitters;
