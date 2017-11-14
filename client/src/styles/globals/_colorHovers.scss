@@ -29,5 +29,5 @@
     }
   }
 } @else {
-  @error '$colors is not defined. Did you import the modules/_colors.scss partial?'
+  @error '$colors is not defined. Did you import the modules/_colors.css partial?'
 }
