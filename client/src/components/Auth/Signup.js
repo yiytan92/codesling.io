@@ -24,7 +24,7 @@ class Signup extends Component {
       username,
       password,
     } = this.state;
-    const { data } = await axios.post(`${process.env.REACT_APP_REST_SERVER_URL}/api/users/false`, {
+    const { data } = await axios.post(`${process.env.REACT_APP_REST_SERVER_URL}/api/users`, {
       username,
       password
     });

@@ -26,8 +26,9 @@ router.route('/users/auth')
   .post(authUser);
 
 // CRUD ops for users
+router.route('/users')
+  .post(createUser);
 router.route('/users/:id')
-  .post(createUser)
   .put(userUpdate)
   .delete(userDelete);
 
@@ -45,4 +46,4 @@ router.route('/slings/messages/:slingId')
   .get(slingMsgFetch)
   .post(slingMsgPost);
 
-module.exports = router;
+export default router;
