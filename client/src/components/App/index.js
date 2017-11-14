@@ -3,10 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 
 import LandingPage from '../LandingPage';
 import ProtectedSling from '../Sling';
-import Login from '../Authentication/Login'
-import Signup from '../Authentication/Signup'
+import Auth from '../Auth';
 import InvalidSlingError from '../Sling/InvalidSlingError';
-// import ProtectedLandingPage from '../LandingPage/'
 import Protected from '../globals/Protected';
 
 import './App.css';
@@ -15,8 +13,7 @@ const App = () => {
   return (
     <div className="app">
       <Switch>
-        <Route path='/login' component={Login} />
-        <Route path='/signup' component={Signup} />
+        <Route path='/auth' component={Auth} />
         <Route path='/slingError' component={InvalidSlingError} />
         <Route path='/:slingId' component={ProtectedSling} />
         <Route path='/' component={(props) => (

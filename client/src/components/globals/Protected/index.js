@@ -8,11 +8,11 @@ class Protected extends Component {
     try {
       const { exp } = jwtDecode(localStorage.token);
       if (exp < Math.floor(Date.now() / 1000)) {
-        this.props.history.push('/login');
+        this.props.history.push('/auth/login');
       }
     } catch (e) {
       debug('error in Protected ', e);
-      this.props.history.push('/login');
+      this.props.history.push('/auth/login');
     }
   }
 
