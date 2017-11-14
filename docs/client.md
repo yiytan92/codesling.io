@@ -17,7 +17,7 @@ Individual components are located inside of `./src/components`. Any reusable sha
 
 ## Styles
 
-Every component is accompanied by a `.scss` file which **is** committed into version control. The accompanying `.css` file that is compiled from the `.scss` source file **is not** committed into version control. In a component, be sure to import the `.css` compiled file like so:
+Every component is accompanied by a `.css` file which **is** committed into version control. The accompanying `.css` file that is compiled from the `.css` source file **is not** committed into version control. In a component, be sure to import the `.css` compiled file like so:
 
 ```diff
 // App.js
