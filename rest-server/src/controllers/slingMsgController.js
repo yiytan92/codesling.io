@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import bluebird from 'bluebird';
 
-import { SlingMsg } from '../models/slingMsg';
-import log from '../../lib/log';
+import SlingMsg from '../db/models/slingMsg';
+import log from '../lib/log';
 
 mongoose.Promise = bluebird;
 

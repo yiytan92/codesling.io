@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 import bluebird from 'bluebird';
 
-import { User } from '../models/user';
-import { hashPassword, comparePasswords } from '../../helpers/bcrypt';
-import { generateToken } from '../../middleware/authentication';
-import log from '../../lib/log';
+import User from '../db/models/user';
+import { hashPassword, comparePasswords } from '../lib/bcrypt';
+import { generateToken } from '../middleware/authentication';
+import log from '../lib/log';
 
 mongoose.Promise = bluebird;
 

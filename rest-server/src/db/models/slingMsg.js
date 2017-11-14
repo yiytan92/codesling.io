@@ -17,4 +17,4 @@ const slingMsg = mongoose.Schema({
 
 const SlingMsg = mongoose.model('SlingMessage', slingMsg);
 
-module.exports = { SlingMsg };
+export default SlingMsg;

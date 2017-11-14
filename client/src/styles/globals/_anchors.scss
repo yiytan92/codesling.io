@@ -1,0 +1,7 @@
+a {
+  color: palette('red');
+
+  &:hover {
+    color: palette('red', 20);
+  }
+}

@@ -25,7 +25,7 @@ class InvalidSlingError extends Component {
       this.props.history.push(`/${slingId}`);
     } catch (e) {
       debug('error retrieving slingId. e = ', e);
-      this.props.history.push('/login');
+      this.props.history.push('/auth/login');
     }
   }
 

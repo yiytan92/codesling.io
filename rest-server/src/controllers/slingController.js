@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 import bluebird from 'bluebird';
 
-import { Sling } from '../models/sling';
-import log from '../../lib/log';
-import generateSlingId from '../../lib/generateSlingId';
+import Sling from '../db/models/sling';
+import log from '../lib/log';
+import generateSlingId from '../lib/generateSlingId';
 
 mongoose.Promise = bluebird;
 

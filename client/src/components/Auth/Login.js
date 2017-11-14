@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import Input from '../globals/forms/Input';
 import Button from '../globals/Button/';
-import Logo from '../globals/Logo';
 
-import './Auth.scss';
-import '../LandingPage/LandingPage.css';
+import './Auth.css';
 
 class Login extends Component {
   state = {
@@ -37,28 +36,35 @@ class Login extends Component {
   render() {
     return (
       <div className="login-form-container">
-        <Logo
-          className="landing-page-logo"
-        />
         <form 
           className="auth-form"
           onSubmit={this.handleLoginSubmit}
         >
           <h2>Login</h2>
+          <p>
+            Don't have an account?
+            <span className="auth-link">
+              <Link to="/auth/signup">
+                Sign up
+              </Link>
+            </span>
+          </p>
           <Input
-            type='text'
-            name='username'
-            placeholder='username'
+            type="text"
+            name="username"
+            placeholder="username"
             onChange={this.handleChange}
           />
           <Input
-            type='password'
-            name='password'
-            placeholder='password'
+            type="password"
+            name="password"
+            placeholder="password"
             onChange={this.handleChange}
           />
           <Button
-            text='Log In'
+            backgroundColor="red"
+            color="white"
+            text="Log In"
             onClick={this.loginClick}
           />
         </form>
