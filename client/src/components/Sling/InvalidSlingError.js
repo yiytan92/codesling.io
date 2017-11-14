@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import debug from '../../../lib/debug';
-import Button from '../Button';
-import Logo from '../Logo';
+import debug from '../../lib/debug';
+import Button from '../globals/Button';
+import Logo from '../globals/Logo';
 
-import '../../LandingPage/LandingPage.css';
+import '../LandingPage/LandingPage.css';
 
 
 class InvalidSlingError extends Component {
@@ -16,7 +16,7 @@ class InvalidSlingError extends Component {
 
   fetchSlingId = async () => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_REST_SERVER_URL}/api/new-sling`,{
+      const { data } = await axios.get(`${process.env.REACT_APP_REST_SERVER_URL}/api/new-sling`, {
         headers: {
           Authorization: `Bearer ${localStorage.token}`,
         }

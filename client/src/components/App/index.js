@@ -5,7 +5,7 @@ import LandingPage from '../LandingPage';
 import ProtectedSling from '../Sling';
 import Login from '../Authentication/Login'
 import Signup from '../Authentication/Signup'
-import InvalidSlingError from '../globals/Error/InvalidSlingError';
+import InvalidSlingError from '../Sling/InvalidSlingError';
 // import ProtectedLandingPage from '../LandingPage/'
 import Protected from '../globals/Protected';
 
