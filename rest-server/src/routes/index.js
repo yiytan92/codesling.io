@@ -17,7 +17,7 @@ import {
   slingMsgFetch,
   slingMsgPost,
 } from '../controllers/slingMsgController';
-import { verifyUserWithJWT } from '../../middleware/authentication';
+import { verifyUserWithJWT } from '../middleware/authentication';
 
 const router = express.Router();
 

@@ -13,4 +13,4 @@ const slingSchema = mongoose.Schema({
 
 const Sling = mongoose.model('Sling', slingSchema);
 
-module.exports = { Sling };
+export default Sling;

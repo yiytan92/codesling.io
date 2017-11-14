@@ -3,8 +3,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 import log from './lib/log';
-import router from './database/routes';
-import './database';
+import router from './routes';
+import './db';
 
 const app = express();
 const port = 4990 || process.env.PORT;
@@ -12,7 +12,7 @@ const port = 4990 || process.env.PORT;
 app.use(bodyParser.json());
 app.use(cors({
   allowedHeaders: 'Content-Type,Authorization',
-  methods: ['GET, POST, PUT, DELETE', 'OPTIONS'],
+  methods: ['GET, POST, PUT, DELETE, OPTIONS'],
 }));
 
 app.use('/api', router);
