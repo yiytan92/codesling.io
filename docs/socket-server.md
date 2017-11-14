@@ -21,6 +21,7 @@ Documentation Table of Contents:
 * [client.ready](#clientready)
 * [client.update](#clientupdate)
 * [client.disconnect](#clientdisconnect)
+* [client.message](#clientmessage)
 
 #### client.ready
 
@@ -56,11 +57,23 @@ Emit to the server when the code editor component unmounts (user navigates away 
 payload: {}
 ```
 
+#### client.message
+
+Emit to the server when the user sends a message via chat
+
+```plaintext
+payload: {
+  message: STRING,
+  username: STRING
+}
+```
+
 ## Server Events:
 
 * [server.initialState](#serverinitialstate)
 * [server.changed](#serverchanged)
 * [server.leave](#serverleave)
+* [server.message](#serverMessage)
 
 #### server.initialState
 
@@ -98,4 +111,15 @@ Emitted by the server when another client leaves the code editing session
 
 ```plaintext
 payload: {}
+```
+
+#### server.message
+
+Emitted by the server when another client sends a message via chat
+
+```plaintext
+payload: {
+  message: STRING,
+  username: STRING
+}
 ```
